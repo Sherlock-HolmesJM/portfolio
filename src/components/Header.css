@@ -1,0 +1,58 @@
+@font-face {
+   font-family: 'Fira Sans';
+   font-style: normal;
+   font-weight: 300;
+   src: local('../fonts/firasans-black-webfont.woff'), format('woff');
+ }
+
+ .header--sticky {
+   position: sticky;
+   top: 0;
+   background: #ffffff;
+ }
+
+.header {
+   display: flex;
+   justify-content: space-around;
+   height: 50px;
+   padding: 10px;
+}
+
+.header__logoDiv {
+   width: 150px;
+}
+
+.header__logo {
+   padding-top: 15px;
+}
+
+.header__ul {
+   display: flex;
+   justify-content: space-around;
+   list-style-type: none;
+   width: 500px;
+}
+
+.header__li {
+   position: relative;
+   color: #ffffff;
+}
+
+.header__a {
+   font-weight: bold;
+   text-decoration: none;
+}
+
+.header__span {
+   position: absolute;
+   left: 0;
+   bottom: -10px;
+   display: block;
+   width: 0;
+   transition: .3s width;
+}
+
+.header__a:hover .header__span {
+   border: 1px dashed blue;
+   width: 97%;
+}

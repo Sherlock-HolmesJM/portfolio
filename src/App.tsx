@@ -1,24 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis consequuntur exercitationem minus. Dolore atque facilis eaque repellendus nostrum reiciendis incidunt iure. Optio iusto animi sapiente nam libero reiciendis, recusandae, harum, eaque laboriosam corrupti minima expedita. Corporis et ipsum ullam est hic ad dolorum dicta minus ipsa labore. Quasi at beatae fuga rem provident, harum, voluptas consequuntur magnam quae inventore minus illo soluta, ab voluptates distinctio debitis voluptatem? Numquam animi impedit deleniti in nobis dolore autem, quasi, officiis distinctio iusto alias vitae laudantium nulla eos sunt ullam delectus ratione est neque ipsam consequuntur consectetur. Rerum sit molestiae aliquid qui excepturi dignissimos, eveniet necessitatibus maiores, voluptates animi sint repudiandae, quo est dolor non cupiditate consectetur et ut. Dolorem, assumenda voluptate dolores ullam ex atque pariatur deserunt consequatur, adipisci labore architecto quod, eum non! Magni, exercitationem reprehenderit. Nam molestias ducimus cum deleniti aperiam repellendus sed et aliquid, quaerat impedit vel rerum ipsa saepe autem asperiores quasi temporibus facilis animi natus perferendis? Quam quibusdam, hic, necessitatibus possimus reprehenderit corporis nulla ex placeat reiciendis suscipit dicta impedit dignissimos earum animi accusantium nemo illo cumque! Quos animi eum temporibus debitis qui quasi vitae sapiente ipsam fugiat dignissimos fuga numquam, nihil commodi, eius magni fugit quo est? Ab aut magni exercitationem, aliquid eaque possimus provident reprehenderit repudiandae hic praesentium vel libero id corrupti voluptates fugiat, nulla natus. Assumenda corporis voluptas obcaecati architecto, illum doloremque modi voluptate in aliquid esse dolores fugiat doloribus? Minus veniam cumque quasi possimus voluptatibus aliquid reprehenderit facere magnam, repudiandae, qui eum! Impedit ipsum suscipit tenetur saepe. Sunt, itaque exercitationem ab optio voluptatum eum facilis odit libero ratione sed tenetur et maxime enim. Culpa soluta velit quasi placeat ipsa accusamus laborum unde adipisci eius veritatis, eveniet nemo autem magni aspernatur iure, beatae ex laboriosam sunt quia, atque molestias. Recusandae at laborum dolorum tempore maiores pariatur praesentium aliquam nesciunt minus assumenda autem libero numquam iste, perferendis iure temporibus tenetur, nemo laboriosam magni delectus esse. Quos error esse exercitationem tempora earum est sunt nihil doloribus soluta impedit nisi, nesciunt eaque optio vero neque ex. Incidunt, praesentium amet exercitationem minima earum dolorem ipsa cum explicabo deleniti facilis, provident fugit optio eius illo vitae tempore nobis ullam harum. Perspiciatis nesciunt inventore corporis labore, expedita tempore iure amet quae. Maxime beatae voluptatibus enim nulla similique perferendis natus blanditiis saepe nostrum sunt tempora impedit illo possimus autem aut, explicabo reprehenderit culpa, suscipit ea, voluptatum provident numquam laborum! Doloribus necessitatibus eos fugit odit quaerat. Minima repellat nesciunt saepe expedita, obcaecati eaque ea. Natus ullam at fugit similique molestias sed ipsum tempora veritatis provident, aliquam atque officiis laudantium reprehenderit dolorum deleniti cupiditate quos, harum dignissimos? Eveniet corporis iste magni porro exercitationem consequuntur doloremque, veritatis iusto nihil aspernatur doloribus esse, vero eligendi provident repellat! Ullam eaque, facilis culpa nisi corporis tempora ipsum voluptas dolor soluta quam alias ab harum sed, tenetur beatae exercitationem perferendis iure nulla et nemo libero ratione cupiditate? Magni, accusantium tenetur reiciendis aperiam, vel dignissimos molestiae officiis, voluptatem qui autem aliquam saepe modi rerum eaque in consequuntur ratione ducimus minus.
     </div>
   );
 }
