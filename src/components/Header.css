@@ -12,17 +12,20 @@
  }
 
 .header {
+   /* position: relative;
+   top: 0; */
    display: flex;
    justify-content: space-around;
    height: 50px;
    padding: 10px;
+   z-index: 111;
 }
 
 .header__logoDiv {
    width: 150px;
 }
 
-.header__logo {
+.header__logo, .header__close, .header__menu {
    padding-top: 15px;
 }
 
@@ -41,6 +44,12 @@
 .header__a {
    font-weight: bold;
    text-decoration: none;
+   color: #ffffff;
+}
+
+.header__a:hover .header__span {
+   border: 1px dashed #fff;
+   width: 97%;
 }
 
 .header__span {
@@ -52,7 +61,89 @@
    transition: .3s width;
 }
 
-.header__a:hover .header__span {
-   border: 1px dashed blue;
-   width: 97%;
+.header__menuDiv {
+   position: relative;
+   display: none;
+   perspective: 800px;
+}
+
+.header__menu {
+   width: 25px;
+   height: 25px;
+}
+
+.header__menu--display-false {
+   display: none;
+   animation: header__ul--display-false 1s;
+}
+@keyframes header__menu--display-false {
+   0% {
+      display: block;
+   }
+   100% {
+      display: none;
+   }
+}
+
+.header__close {
+   display: none;
+   width: 35px;
+   height: 30px;
+}
+
+.header__close--display-true {
+   display: block;
+   animation: header__close--display-true 2s;
+}
+@keyframes header__close--display-true {
+   0% {
+      display: none;
+   }
+   100% {
+      display: block;
+   }
+}
+
+.header__close--display-false {
+   display: none;
+   animation: header__close--display-false 2s;
+}
+@keyframes header__close--display-false {
+   0% {
+      display: block;
+   }
+   100% {
+      display: none;
+   }
+}
+
+/* ===============================
+   ======== MEDIA QUERIES ========
+   =============================== */
+
+@media only screen and (max-width: 989px) {
+   .header {
+      justify-content: space-between;
+      padding-left: 5%;
+      padding-right: 8%;
+      
+   }
+
+   .header__ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      margin: 0px -30px 0 -150px;
+      background: #ffffff;
+   }
+
+   .header__a {
+      color: #898b8a;
+   }
+
+   .header__menuDiv {
+      display: block;
+   }
 }
