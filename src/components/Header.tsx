@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import './Header.css';
-// @ts-ignore
-import anime from 'animejs/lib/anime.es';
-import { VscMenu, VscClose } from 'react-icons/vsc';
-import logo from '../logo.svg'
+import logo from '../logo.svg';
+import { MenuToggle } from './MenuToggle';
+import { motion, useCycle } from 'framer-motion';
+import Nav from './Nav';
 import log from '../logger';
 
-interface Props {  }
+interface Props { }
 
 function Header(props: Props) {
-   const [sticky, setSticky] = useState(false);
-   let showNavAnime: any;
 
-   const displayEl = (el: string) => (document.querySelector(el) as HTMLElement).style.display = 'block';
-   const hideEl = (el: string) => (document.querySelector(el) as HTMLElement).style.display = 'none';
+   const [isOpen, toggleOpen] = useCycle(false, true);
+   const [sticky, setSticky] = useState(false);
 
    window.addEventListener('scroll', () => {
       if (window.scrollY === 2 || window.scrollY === 10) {
@@ -23,90 +21,34 @@ function Header(props: Props) {
       }
    });
 
-   const showNav =  () => {
+   const logoInit = {
+      y: -50,
+      opacity: 0
+   }
 
-      showNavAnime = anime({
-         targets: '.header__ul',
-         translateY: 70,
-         duration: 1000,
-         easing: 'spring(1, 80, 10, 0)',
-         begin: () => { displayEl('.header__ul'); }
-       });
+   const logoVariant = {
+      y: 0,
+      opacity: 1
+   }
 
+   const mediaQuery = window.matchMedia('(max-width: 989px)');
+   const [matches, setMatches] = useState(mediaQuery.matches);
 
-       showNavAnime.finished.then(() => {
-         hideEl('.header__menu');
-         displayEl('.header__close');
-       });
-
-   };
-
-   const closeNav = () => {
-
-      showNavAnime.play();
-
-      showNavAnime.finished.then(() => {
-         showNavAnime.reverse();
-
-         showNavAnime.finished.then(() => {
-            hideEl('.header__ul');
-            hideEl('.header__close');
-            displayEl('.header__menu');
-         })
-      });
-
-   };
+   mediaQuery.addEventListener('change', e => { if (matches !== e.matches) setMatches(e.matches) });
 
    return (
-      <header className={`header ${sticky ? 'header--sticky' : ''} `}>
+      <motion.header className={`header ${sticky ? 'header--sticky' : ''} `}
+         initial={false}
+         animate={!matches ? "keep" : isOpen ? "open" : "closed"}
+      >
          <div className="header__logoDiv">
-            <img src={logo} alt="logo" className="header__logo"/>
+            <motion.img initial={logoInit} animate={logoVariant} src={logo} alt="logo" className="header__logo"/>
          </div>
 
-         <ul className={`header__ul`}>
-            <li className="header__li">
-               <a href="./#" className="header__a">
-                  Home
-                  <span className="header__span"></span>
-               </a>
-            </li>
-            <li className="header__li">
-               <a href="./#" className="header__a">
-                  About
-                  <span className="header__span"></span>
-               </a>
-            </li>
-            <li className="header__li">
-               <a href="./#" className="header__a">
-                  Services
-                  <span className="header__span"></span>
-               </a>
-            </li>
-            <li className="header__li">
-               <a href="./#" className="header__a">
-                  Portfolio
-                  <span className="header__span"></span>
-               </a>
-            </li>
-            <li className="header__li">
-               <a href="./#" className="header__a">
-                  Pricing
-                  <span className="header__span"></span>
-               </a>
-            </li>
-            <li className="header__li">
-               <a href="./#" className="header__a">
-                  Experience
-                  <span className="header__span"></span>
-               </a>
-            </li>
-         </ul>
+         <Nav />
 
-         <div className="header__menuDiv">
-            <VscMenu className={`header__menu `} onClick={() => showNav() }/>
-            <VscClose className={`header__close `} onClick={() => closeNav()}/>
-         </div>
-      </header>
+         <MenuToggle toggle={() => toggleOpen() } />
+      </motion.header>
    )
 }
 
