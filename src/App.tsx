@@ -1,10 +1,16 @@
-import React, { useCallback } from 'react';
-import './App.css';
+import React, { useCallback, useState } from 'react';
+import { useViewportScroll } from 'framer-motion';
 import Header from './components/Header';
-// import log from './logger';
+import Home from './components/Home';
+import log from './logger';
+import './App.css';
 // import Particles from './particles/particles.min.js';
 
 function App() {
+
+  // const scrollView = useViewportScroll();
+
+  // log(scrollView);
 
   // const canvas = useCallback(node => {
   
@@ -26,12 +32,18 @@ function App() {
 
   // }, []);
 
+  const mediaQuery = window.matchMedia('(max-width: 989px)');
+  const [matches, setMatches] = useState(mediaQuery.matches);
 
+  mediaQuery.addEventListener('change', () => {
+    if (matches !== mediaQuery.matches) setMatches(mediaQuery.matches);
+  });
 
   return (
     <div className="App">
-      <Header />
+      <Header matches={matches} />
 
+      <Home matches={matches} />
       {/* <canvas ref={canvas} className="background"></canvas> */}
     </div>
   );

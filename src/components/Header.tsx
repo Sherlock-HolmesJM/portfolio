@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
-import './Header.css';
-import logo from '../logo.svg';
-import { MenuToggle } from './MenuToggle';
 import { motion, useCycle } from 'framer-motion';
-import Nav from './Nav';
+import styled from 'styled-components';
+import { MenuToggle } from './MenuToggle';
 import log from '../logger';
+import Nav from './Nav';
+import logo from '../logo.svg';
 
-interface Props { }
+interface Props { 
+   matches: boolean,
+}
 
 function Header(props: Props) {
+   const { matches } = props;
 
    const [isOpen, toggleOpen] = useCycle(false, true);
    const [sticky, setSticky] = useState(false);
 
    window.addEventListener('scroll', () => {
-      if (window.scrollY === 2 || window.scrollY === 10) {
-        if (!sticky) setSticky(true);
+      if (window.scrollY > 0) {
+        if (sticky === false) {
+           setSticky(true);
+         }
       } else if (window.scrollY === 0) {
          setSticky(false);
       }
@@ -31,25 +36,57 @@ function Header(props: Props) {
       opacity: 1
    }
 
-   const mediaQuery = window.matchMedia('(max-width: 989px)');
-   const [matches, setMatches] = useState(mediaQuery.matches);
-
-   mediaQuery.addEventListener('change', e => { if (matches !== e.matches) setMatches(e.matches) });
-
    return (
-      <motion.header className={`header ${sticky ? 'header--sticky' : ''} `}
+      <HeaderComp className={sticky ? 'header--sticky' : ''}
          initial={false}
          animate={!matches ? "keep" : isOpen ? "open" : "closed"}
+         sticky={sticky}
+         matches={matches}
       >
-         <div className="header__logoDiv">
-            <motion.img initial={logoInit} animate={logoVariant} src={logo} alt="logo" className="header__logo"/>
-         </div>
+         <Div>
+            <Img initial={logoInit} animate={logoVariant} src={logo} alt="logo" />
+         </Div>
 
-         <Nav />
+         <Nav sticky={sticky} />
 
          <MenuToggle toggle={() => toggleOpen() } />
-      </motion.header>
+      </HeaderComp>
    )
 }
+
+const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
+   position: ${props => props.sticky ? 'sticky' : 'absolute'};
+   top: 0;
+   display: flex;
+   justify-content: space-around;
+   height: 100px;
+   width: 100%;
+   padding: 10px;
+   transition: all .6s;
+   z-index: 111;
+
+   &.header--sticky {
+      height: 50px;
+      background: #fff;
+      border-radius: 0px;
+      box-shadow:   5px 5px 10px #d9d9d9, 
+      -5px -5px 10px #ffffff;
+   }
+
+   @media only screen and (max-width: 989px) {
+      justify-content: space-between;
+      padding-left: 5%;
+      padding-right: 8%;
+   }
+`;
+
+const Div = styled.div`
+   width: 150px;
+`;
+
+const Img = styled(motion.img)`
+   // float: left;
+   padding-top: 15px;
+`;
 
 export default Header;

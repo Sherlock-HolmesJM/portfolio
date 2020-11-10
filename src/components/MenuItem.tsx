@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-//@ts-ignore
 import styled from 'styled-components';
 import log from '../logger';
 
 interface Props {
    name: string,
    path?: string,
+   active: boolean,
+   index: number,
+   sticky: boolean,
+
+   toggleActive: (e: any) => void
 }
 
 function MenuItem(props: Props) {
    
-   const { name } = props;
-
-   const toggleActive = (e: any) => { e.target.classList.toggle('li__a--active'); };
+   const { name, active, index, toggleActive, sticky } = props;
 
    const variants = {
       open: {
@@ -21,22 +23,24 @@ function MenuItem(props: Props) {
         opacity: 1,
       },
       closed: {
-        y: -12,
+        y: -10,
         opacity: 0,
       },
-      keep: { 
+      keep: {
          y: 0,
         opacity: 1,
       }
    };
 
    return (
-      <Li className="li"
-         variants={variants}
-      >
-         <A href="./#" className="li__a" onClick={toggleActive}
+      <Li className="li" variants={variants}>
+         <A href="./#" className="li__a" 
+            data-index={index} 
+            active={active}
+            sticky={sticky}
             whileHover={{scale: 1.1}}
             whileTap={{scale: 0.95}}
+            onClick={toggleActive}
          >
             {name}
             <Span className="li__span"></Span>
@@ -49,20 +53,17 @@ const Li = styled(motion.li)`
    position: relative;
 `;
 
-const A = styled(motion.a)`
+const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
    font-weight: bold;
    text-decoration: none;
-   color: #fff;
-   :hover .li__span {
+   color: ${props => props.active ? '#16a596' : props.sticky ? '#4c4c4c' :  '#fff'};
+   &:hover .li__span {
       border: 1px dashed #fff;
       width: 97%;
    }
-   .li__a--active {
-      color: #16a596;
-   }
 
    @media only screen and (max-width: 989px) {
-      color: #4c4c4c;
+      color: ${(props) => props.active ? '#16a596' :  '#4c4c4c'};
       :hover { color: #16a596; }
    }
 `;

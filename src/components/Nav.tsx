@@ -2,29 +2,38 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import MenuItem from './MenuItem';
+import log from '../logger';
 
-interface Props {}
+interface Props { 
+   sticky: boolean,
+ }
 
 function Nav(props: Props) {
-   // const {} = props
+   const { sticky } = props;
    
-   const menuItems = ['Home', 'About', 'Services', 'Portfolio', 'Pricing', 'Experience'];
+   const [itemsState, setItemsState] = useState([false, false, false, false, false, false]);
+   const items = ['Home', 'About', 'Services', 'Portfolio', 'Pricing', 'Experience'];
+
+   const toggleActive = (e: any) => {
+      const index = parseInt(e.target.dataset.index);
+      const tempState = [false, false, false, false, false, false];
+      tempState[index] = index === 0 ? false : true;
+
+      setItemsState([...tempState]);
+   };
 
    const variants = {
       open: {
-         translateY: 50,
-         height: '150px',
          opacity: 1,
-        transition: { staggerChildren: 0.07, stagger: 0.05 }
+         height: 150,
+         transition: { staggerChildren: 0.07, stagger: 0.05 }
       },
       closed: {
-         translateY: 0,
-         height: '100px',
          opacity: 0,
-        transition: { staggerChildren: 0.05, staggerDirection: -1, stagger: 0.03, delay: 0.2 }
+         height: 0,
+         transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.3 }
       },
-      keep: { 
-         translateY: 0,
+      keep: {
          height: '20px',
          opacity: 1,
       }
@@ -32,7 +41,12 @@ function Nav(props: Props) {
 
    return (
       <Ul className="ul" variants={variants}>
-         {menuItems.map((item, index) => <MenuItem key={index} name={item} />)}
+         {items.map((item, index) => <MenuItem key={index} 
+                                               index={index} 
+                                               active={itemsState[index]} 
+                                               name={item}
+                                               sticky={sticky}
+                                               toggleActive={toggleActive} />)}
       </Ul>
    )
 }
@@ -46,8 +60,8 @@ const Ul = styled(motion.ul)`
    @media only screen and (max-width: 989px) {
       flex-direction: column;
       width: 100%;
-      height: 150px;
       padding: 10px;
+      transform: translateY(50px);
       margin: 0px -30px 0 -150px;
       background: #fff;
    }
