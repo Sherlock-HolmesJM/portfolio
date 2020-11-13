@@ -5,6 +5,7 @@ import { MenuToggle } from './MenuToggle';
 import log from '../logger';
 import Nav from './Nav';
 import logo from '../logo.svg';
+import { color1, color2, color3, color4 } from '../config';
 
 interface Props { 
    matches: boolean,
@@ -21,30 +22,31 @@ function Header(props: Props) {
         if (sticky === false) {
            setSticky(true);
          }
-      } else if (window.scrollY === 0) {
+      } else if (window.scrollY < 2) {
          setSticky(false);
       }
    });
 
-   const logoInit = {
-      y: -50,
-      opacity: 0
-   }
-
-   const logoVariant = {
-      y: 0,
-      opacity: 1
+   const logoVariants = {
+      start: {
+         scale: 0
+      },
+      stop: {
+         scale: 1,
+         transition: { duration: 1 }
+      }
    }
 
    return (
-      <HeaderComp className={sticky ? 'header--sticky' : ''}
+      <HeaderComp layout transition={{ duration: 0.6 }}
+         className={sticky ? 'header--sticky' : ''}
          initial={false}
          animate={!matches ? "keep" : isOpen ? "open" : "closed"}
          sticky={sticky}
          matches={matches}
       >
          <Div>
-            <Img initial={logoInit} animate={logoVariant} src={logo} alt="logo" />
+            <Img variants={logoVariants} initial="start" animate="stop" src={logo} alt="logo" />
          </Div>
 
          <Nav sticky={sticky} />
@@ -55,22 +57,20 @@ function Header(props: Props) {
 }
 
 const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
-   position: ${props => props.sticky ? 'sticky' : 'absolute'};
+   position: ${({matches, sticky}) => sticky ? 'sticky' : matches ? 'static' : 'absolute'};
    top: 0;
    display: flex;
    justify-content: space-around;
-   height: 100px;
-   width: 100%;
+   height: ${({sticky}) => sticky ? '50px' : '60px'};
+   width: ${({matches, sticky}) => sticky ? '' : matches ? '' : '97.2vw'};
    padding: 10px;
-   transition: all .6s;
    z-index: 111;
 
    &.header--sticky {
-      height: 50px;
-      background: #fff;
+      background: ${color1};
       border-radius: 0px;
-      box-shadow:   5px 5px 10px #d9d9d9, 
-      -5px -5px 10px #ffffff;
+      box-shadow:   3px 3px 3px ${color2},
+      -5px -5px 10px ${color4};
    }
 
    @media only screen and (max-width: 989px) {

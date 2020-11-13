@@ -34,7 +34,7 @@ function Nav(props: Props) {
          transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.3 }
       },
       keep: {
-         height: '20px',
+         height: 20,
          opacity: 1,
       }
     };

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import log from '../logger';
+import { color1, color2, color3, color4 } from '../config';
 
 interface Props {
    name: string,
@@ -14,6 +15,8 @@ interface Props {
 }
 
 function MenuItem(props: Props) {
+
+   
    
    const { name, active, index, toggleActive, sticky } = props;
 
@@ -38,8 +41,6 @@ function MenuItem(props: Props) {
             data-index={index} 
             active={active}
             sticky={sticky}
-            whileHover={{scale: 1.1}}
-            whileTap={{scale: 0.95}}
             onClick={toggleActive}
          >
             {name}
@@ -51,20 +52,22 @@ function MenuItem(props: Props) {
 
 const Li = styled(motion.li)`
    position: relative;
+   margin: 0 20px 0 20px;
 `;
 
 const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
-   font-weight: bold;
+   font-size: 18px;
+   font-weight: 600;
    text-decoration: none;
-   color: ${props => props.active ? '#16a596' : props.sticky ? '#4c4c4c' :  '#fff'};
+   color: ${props => props.active ? color3 : props.sticky ? color4 :  color1};
    &:hover .li__span {
       border: 1px dashed #fff;
       width: 97%;
    }
 
    @media only screen and (max-width: 989px) {
-      color: ${(props) => props.active ? '#16a596' :  '#4c4c4c'};
-      :hover { color: #16a596; }
+      color: ${(props) => props.active ? color3 :  color4};
+      :hover { color: ${color3} }
    }
 `;
 
