@@ -45,13 +45,21 @@ function Header(props: Props) {
          sticky={sticky}
          matches={matches}
       >
-         <Div>
-            <Img variants={logoVariants} initial="start" animate="stop" src={logo} alt="logo" />
-         </Div>
 
-         <Nav sticky={sticky} />
+         <Aside></Aside>
+         
+         <Main>
+            <Div>
+               <Img variants={logoVariants} initial="start" animate="stop" src={logo} alt="logo" />
+            </Div>
 
-         <MenuToggle toggle={() => toggleOpen() } />
+            <Nav sticky={sticky} />
+
+            <MenuToggle toggle={() => toggleOpen() } />
+         </Main>
+
+         <Aside></Aside>
+      
       </HeaderComp>
    )
 }
@@ -60,10 +68,8 @@ const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
    position: ${({matches, sticky}) => sticky ? 'sticky' : matches ? 'static' : 'absolute'};
    top: 0;
    display: flex;
-   justify-content: space-around;
    height: ${({sticky}) => sticky ? '50px' : '60px'};
    width: ${({matches, sticky}) => sticky ? '' : matches ? '' : '97.2vw'};
-   padding: 10px;
    z-index: 111;
 
    &.header--sticky {
@@ -71,12 +77,6 @@ const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
       border-radius: 0px;
       box-shadow:   3px 3px 3px ${color2},
       -5px -5px 10px ${color4};
-   }
-
-   @media only screen and (max-width: 989px) {
-      justify-content: space-between;
-      padding-left: 5%;
-      padding-right: 8%;
    }
 `;
 
@@ -87,6 +87,16 @@ const Div = styled.div`
 const Img = styled(motion.img)`
    // float: left;
    padding-top: 15px;
+`;
+
+const Main = styled.main`
+   flex-basis: 90%;
+   display: flex;
+   justify-content: space-between;
+`;
+
+const Aside = styled.aside`
+   flex-basis: 10%;
 `;
 
 export default Header;

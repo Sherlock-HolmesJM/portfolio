@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useViewportScroll } from 'framer-motion';
 import Header from './components/Header';
-import Home from './components/Home';
+import Home from './sections/Home';
 import log from './logger';
 import './App.css';
 // import Particles from './particles/particles.min.js';

@@ -24,11 +24,13 @@ function Nav(props: Props) {
 
    const variants = {
       open: {
+         // display: 'block',
          opacity: 1,
          height: 150,
          transition: { staggerChildren: 0.07, stagger: 0.05 }
       },
       closed: {
+         // display: 'none',
          opacity: 0,
          height: 0,
          transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.3 }

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import { motion, useViewportScroll } from 'framer-motion';
 import log from '../logger';
-import hero from '../hero.png';
+import hero from '../images/hero.png';
 import { color3, color5 } from '../config';
 
 interface Props {
@@ -86,6 +86,10 @@ const MainDiv = styled.div`
    flex-basis: 90%;
    display: flex;
    justify-content: center;
+
+   @media only screen and (max-width: 989px) {
+      flex-direction: column;
+   }
 `;
 
 const MainDivItem1 = styled(motion.div)`
