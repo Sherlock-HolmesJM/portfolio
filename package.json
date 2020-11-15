@@ -12,6 +12,7 @@
     "@types/react-dom": "^16.9.9",
     "@types/styled-components": "^5.1.4",
     "framer-motion": "^2.9.4",
+    "gsap": "^3.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^3.11.0",

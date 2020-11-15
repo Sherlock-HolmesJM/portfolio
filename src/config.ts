@@ -1,5 +1,5 @@
 export const color1 = '#ffffff';
-export const color2 = 'rgba(246,245,241,1)';
+export const color2 = '#cfd3ce';
 export const color3 = '#16a596';
 export const color4 = '#4c4c4c';
 export const color5 = '#333456';
