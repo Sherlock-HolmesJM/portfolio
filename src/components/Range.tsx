@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color1, color2, color3 } from '../config';
+import * as config from '../config';
 
 interface Props {
    id?: string,
@@ -29,9 +29,11 @@ function Range(props: Props) {
 }
 
 const Container = styled.div`
-   width: 600px;
-   margin: 10px;
+   // width: 600px;
+   width: 100%;
+   margin: 10px 0;
    border-radius: 15px;
+   color: ${config.color5};
 `;
 
 const Div = styled.div`
@@ -40,8 +42,8 @@ const Div = styled.div`
 
 const SkillbarContainer = styled.div`
    position: relative;
-   background: ${color2};
-   width: 600px;
+   background: ${config.color2};
+   width: 550px;
    height: 9px;
 `;
 
@@ -50,7 +52,7 @@ const Skillbar = styled.div<{ value: string | number}>`
    top: 0;
    height: 9px;
    width: ${prop => prop.value}%;
-   background-color: ${color3};
+   background-color: ${config.color3};
    border-radius: 15px;
 `;
 
@@ -60,8 +62,8 @@ const SkillbarCap = styled.div`
    right: 0;
    height: 14px;
    width: 3px;
-   background-color: ${color1};
-   border: 2px solid ${color3};
+   background-color: ${config.color1};
+   border: 2px solid ${config.color3};
 `;
 
 const SkillPercentage = styled.span`

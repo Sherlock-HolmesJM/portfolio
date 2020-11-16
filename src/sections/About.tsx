@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import aboutHero from '../images/about_hero.png';
 import Range from '../components/Range';
-import { color3 } from '../config';
+import SubHeader from '../components/SubHeader';
+import * as config from '../config';
 
 interface Props {}
 
@@ -14,15 +15,15 @@ function About(props: Props) {
          <Aside></Aside>
 
          <Main>
-            <MainDiv>
-               <HeroFrame>
+            <MainDiv1>
+                  <HeroFrame></HeroFrame>
+                  <HeroFrame2></HeroFrame2>
                   <Hero src={aboutHero} alt="about_hero" />
-               </HeroFrame>
-            </MainDiv>
+            </MainDiv1>
 
-            <MainDiv>
-                  <h3>About</h3>
-                  <h2>Why Should You Hire Me?</h2>
+            <MainDiv2>
+                  <SubHeader name="About" caption="Why Should You Hire Me?"/>
+
                   <p>
                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem recusandae doloremque ex perferendis quo in quia, porro nemo. Enim magni consectetur asperiores dicta recusandae est, ut facilis, iste, molestias vitae ab similique culpa velit neque ea a corporis ipsa accusantium.
                   </p>
@@ -34,7 +35,7 @@ function About(props: Props) {
                   <Range skill="Web Animation" value="78" />
                   <Range skill="Firebase/Heroku/Netlify" value="70" />
                   <Range skill="Git/GitHub" value="76" />
-            </MainDiv>
+            </MainDiv2>
          </Main>
 
          <Aside></Aside>
@@ -43,27 +44,49 @@ function About(props: Props) {
 }
 
 const ABOUT = styled.div`
-
-`;
-
-const Main = styled.main`
    display: flex;
 `;
 
-const MainDiv = styled.div`
-
+const Main = styled.main`
+   flex-basis: 90%;
+   display: flex;
 `;
 
+const MainDiv1 = styled.div`
+   flex-basis: 70%;
+   position: relative;
+`;
 const HeroFrame = styled.div`
-   border: 3px solid ${color3};
+   position: absolute;
+   bottom: 33px;
+   border: 14px solid ${config.color3};
+   border-top: none;
+   width: 350px;
+   height: 380px;
+   z-index: -111;
+`;
+const HeroFrame2 = styled(HeroFrame)`
+   height: 412px;
+   width: 360px;
+   border: none;
+   border-top: 14px solid ${config.color3};
+   border-left: 14px solid ${config.color3};
+   transform: skewY(10deg);
+`;
+const Hero = styled.img`
+   width: 500px;
 `;
 
-const Hero = styled.img`
+const MainDiv2 = styled.div`
+   flex-basis: 30%;
 
+   p { 
+      color: ${config.color4}
+   }
 `;
 
 const Aside = styled.aside`
-
+   flex-basis: 10%;
 `;
 
 export default About
