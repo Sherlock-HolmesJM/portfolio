@@ -12,9 +12,9 @@ const captions = ['Frontend Development', 'Rest API Development', 'Web Animation
 const icons = [FaCode, AiFillApi, MdSlowMotionVideo];
 
 const texts = [
-   'With JavaScript, React, HTML5, CSS3, Rest API, Netlify | Firebase, Web Animation, GitHub.',
-   'With NodeJS, Express, Heroku, GitHub.',
-   'With Framer Motion, GSAP, ScrollTrigger, CSS3.',
+   'with JavaScript, React, HTML5, CSS3, Rest API, Netlify | Firebase, Web Animation, GitHub.',
+   'with NodeJS, Express, Heroku, GitHub.',
+   'with Framer Motion, GSAP, ScrollTrigger, CSS3.',
 ];
 
 

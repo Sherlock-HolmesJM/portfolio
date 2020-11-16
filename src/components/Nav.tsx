@@ -12,7 +12,7 @@ function Nav(props: Props) {
    const { sticky } = props;
    
    const [itemsState, setItemsState] = useState([false, false, false, false, false, false]);
-   const items = ['Home', 'About', 'Services', 'Portfolio', 'Pricing', 'Experience'];
+   const items = ['Home', 'About', 'Services', 'Portfolio', 'Experience'];
 
    const toggleActive = (e: any) => {
       const index = parseInt(e.target.dataset.index);

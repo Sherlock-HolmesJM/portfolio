@@ -1,14 +1,15 @@
-import React, { useCallback, useState } from 'react';
-import { useViewportScroll } from 'framer-motion';
+import React, { useState } from 'react';
+// import { useViewportScroll } from 'framer-motion';
+// import log from './logger';
+// import gsap from 'gsap';
+// import scrollTrigger from 'gsap/ScrollTrigger';
+// import Particles from './particles/particles.min.js';
+import './App.css';
 import Header from './components/Header';
 import Home from './sections/Home';
 import About from './sections/About';
+import Portfolio from './sections/Portfolio';
 import Service from './sections/Service';
-import log from './logger';
-import gsap from 'gsap';
-import scrollTrigger from 'gsap/ScrollTrigger';
-import './App.css';
-// import Particles from './particles/particles.min.js';
 
 function App() {
 
@@ -52,6 +53,8 @@ function App() {
       <About />
 
       <Service />
+
+      <Portfolio />
       {/* <canvas ref={canvas} className="background"></canvas> */}
     </div>
   );

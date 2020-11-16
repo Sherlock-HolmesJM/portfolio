@@ -83,9 +83,8 @@ const Caption = styled.h2`
 const Text = styled.p`
    color: ${config.color5};
    transition: ${transition};
-   font-size: 25px;
+   font-size: 18px;
    font-weight: 400px;
-   line-height: 20px;
 `;
 
 export default Card
