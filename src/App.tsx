@@ -3,6 +3,7 @@ import { useViewportScroll } from 'framer-motion';
 import Header from './components/Header';
 import Home from './sections/Home';
 import About from './sections/About';
+import Service from './sections/Services';
 import log from './logger';
 import gsap from 'gsap';
 import scrollTrigger from 'gsap/ScrollTrigger';
@@ -49,6 +50,8 @@ function App() {
       <Home matches={matches} />
 
       <About />
+
+      <Service />
       {/* <canvas ref={canvas} className="background"></canvas> */}
     </div>
   );
