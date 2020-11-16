@@ -4,20 +4,25 @@ import * as config from '../config';
 
 interface Props {
    name: string,
-   caption: string
+   caption: string,
+   center?: boolean,
 }
 
 function SubHeader(props: Props) {
-   const { name, caption } = props
+   const { name, caption, center } = props
 
    return (
-      <div>
+      <Div center={center}>
          <H3>{name}</H3>
          <H2>{caption}</H2>
          <Span></Span>
-      </div>
+      </Div>
    )
 }
+
+const Div = styled.div<{ center?: boolean }>`
+   text-align: ${props => props.center ? 'center' : 'left'};
+`;
 
 const H2 = styled.h2`
    font-size: 35px;

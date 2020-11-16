@@ -1,12 +1,21 @@
 import React from 'react'
 
-interface Props {}
+interface Props {
+   caption?: string,
+   text?: string,
+   Icon?: any
+
+}
 
 function Card(props: Props) {
-   const {} = props
+   const { caption, Icon, text } = props
 
    return (
-      
+      <div>
+         <Icon />
+         <div>{caption}</div>
+         <p>{text}</p>
+      </div>
    )
 }
 
