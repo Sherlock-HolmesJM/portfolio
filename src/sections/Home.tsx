@@ -1,9 +1,10 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import { motion, useViewportScroll } from 'framer-motion';
+import { motion } from 'framer-motion';
 import log from '../logger';
 import hero from '../images/hero.png';
-import { color3, color5 } from '../config';
+import Button from '../components/Button';
+import { color1, color2, color3, color5 } from '../config';
 
 interface Props {
    matches: boolean
@@ -77,7 +78,7 @@ const linear_grad = 'linear-gradient(70deg, rgba(246,245,241,1) 50%, rgba(22,165
 const HomeComp = styled(motion.div)<Props>`
    display: flex;
    color: ${color5};
-   background: ${({ matches }) => matches ? 'rgb(246,245,241)' : linear_grad};
+   background: ${({ matches }) => matches ? color2 : linear_grad};
    background-repeat: no-repeat;
    box-sizing: border-box;
 `;
@@ -127,22 +128,6 @@ const P2 = styled(motion.p)`
    font-size: 18px;
    font-weight: 500;
    margin-top: 15px;
-`;
-
-const Button = styled(motion.button)`
-   font-family: 'Montserat' sans-serif;
-   font-size: 15px;
-   padding: 10px;
-   color: #fff;
-   background: ${color3};
-   outline: none;
-   border: none;
-   border-radius: 5px;
-   width: 120px;
-   height: 50px;
-   margin-top: 15px;
-
-   :hover { cursor: pointer; }
 `;
 
 const MainDivItem2 = styled.div`

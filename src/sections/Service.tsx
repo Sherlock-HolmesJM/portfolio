@@ -7,15 +7,16 @@ import { FaCode } from 'react-icons/fa';
 import { MdSlowMotionVideo } from 'react-icons/md';
 import * as config from '../config';
 
-const texts = [
-   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quas odit quis voluptas, laborum dolor.',   
-   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quas odit quis voluptas, laborum dolor.',    
-   'Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quas odit quis voluptas, laborum dolor.',    
-];
+const captions = ['Frontend Development', 'Rest API Development', 'Web Animation'];
 
 const icons = [FaCode, AiFillApi, MdSlowMotionVideo];
 
-const captions = ['Frontend Development', 'Rest API Development', 'Web Animation'];
+const texts = [
+   'With JavaScript, React, HTML5, CSS3, Rest API, Netlify | Firebase, Web Animation, GitHub.',
+   'With NodeJS, Express, Heroku, GitHub.',
+   'With Framer Motion, GSAP, ScrollTrigger, CSS3.',
+];
+
 
 interface Props {}
 
@@ -54,7 +55,6 @@ const CardContainer = styled.div`
    justify-content: space-around;
    flex-wrap: wrap;
    margin: 20px 0;
-   border: 1px solid blue;
 `;
 
 const Aside = styled.aside`

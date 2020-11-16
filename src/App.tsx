@@ -3,7 +3,7 @@ import { useViewportScroll } from 'framer-motion';
 import Header from './components/Header';
 import Home from './sections/Home';
 import About from './sections/About';
-import Service from './sections/Services';
+import Service from './sections/Service';
 import log from './logger';
 import gsap from 'gsap';
 import scrollTrigger from 'gsap/ScrollTrigger';

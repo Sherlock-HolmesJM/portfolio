@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
 import styled from 'styled-components';
 import { MenuToggle } from './MenuToggle';
-import log from '../logger';
 import Nav from './Nav';
 import logo from '../logo.svg';
-import { color1, color2, color3, color4 } from '../config';
+import * as config from '../config';
 
 interface Props { 
    matches: boolean,
@@ -38,7 +37,7 @@ function Header(props: Props) {
    }
 
    return (
-      <HeaderComp layout transition={{ duration: 0.6 }}
+      <HeaderComp layout transition={{ duration: 0.4 }}
          className={sticky ? 'header--sticky' : ''}
          initial={false}
          animate={!matches ? "keep" : isOpen ? "open" : "closed"}
@@ -73,10 +72,8 @@ const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
    z-index: 111;
 
    &.header--sticky {
-      background: ${color1};
-      border-radius: 0px;
-      box-shadow:   3px 3px 3px ${color2},
-      -5px -5px 10px ${color4};
+      background: ${config.color1};
+      border: 3px solid ${config.color1};
    }
 `;
 

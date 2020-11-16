@@ -42,7 +42,7 @@ const Div = styled.div`
 
 const SkillbarContainer = styled.div`
    position: relative;
-   background: ${config.color2};
+   background: ${config.color6};
    width: 550px;
    height: 9px;
 `;

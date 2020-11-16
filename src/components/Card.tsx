@@ -33,13 +33,14 @@ const CARD = styled.div`
    width: 280px;
    padding: 20px;
    margin: 10px;
-   border: 2px grove ${config.color1};
+   border: 3px dashed ${config.color6};
    border-radius: 10px;
    transition: ${transition};
 
    &:hover { 
       background: ${config.color3};
       color: ${config.color1};
+      border: 3px solid ${config.color1};
    }
 
    &:hover .card__iconDiv {
@@ -82,6 +83,9 @@ const Caption = styled.h2`
 const Text = styled.p`
    color: ${config.color5};
    transition: ${transition};
+   font-size: 25px;
+   font-weight: 400px;
+   line-height: 20px;
 `;
 
 export default Card
