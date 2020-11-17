@@ -15,8 +15,6 @@ interface Props {
 
 function MenuItem(props: Props) {
 
-   
-   
    const { name, active, index, toggleActive, sticky } = props;
 
    const variants = {

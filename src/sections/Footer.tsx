@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
+import * as config from '../config';
 import logo from '../logo.svg';
 import { ImTwitter } from 'react-icons/im';
-import { FaTelegramPlane } from 'react-icons/fa';
-import { IoLogoWhatsapp } from 'react-icons/io';
+// import { FaTelegramPlane } from 'react-icons/fa';
+// import { IoLogoWhatsapp } from 'react-icons/io';
 import Nav from '../components/Nav';
 
 interface Props {}
 
 function Footer(props: Props) {
-   const {} = props
+   // const {} = props
 
    return (
       <FOOTER>
@@ -21,13 +22,11 @@ function Footer(props: Props) {
             </MainDIv>
 
             <MainDIv className="footer__icons">
-               <ImTwitter />
-               <FaTelegramPlane />
-               <IoLogoWhatsapp />
+               <ImTwitter className="footer__icon" />
             </MainDIv>
 
             <MainDIv className="footer__emailHolder">
-               <p>sherllyj191@gmail.com</p>
+               <P>sherllyj191@gmail.com</P>
             </MainDIv>
             
             <MainDIv className="footer__navHolder">
@@ -42,6 +41,8 @@ function Footer(props: Props) {
 
 const FOOTER = styled.div`
    display: flex;
+   height: 600px;
+   background: ${config.color2};
 `;
 
 const Main = styled.main`
@@ -54,9 +55,24 @@ const Main = styled.main`
 
 const MainDIv = styled.div`
    
-   .footer__logoHolder {
+   &.footer__logoHolder {
       margin: 20px 0;
    }
+
+   .footer__icon {
+      width: 50px;
+      height: 50px;
+      color: ${config.color6};
+      transition: color .5s ease-in-out;
+   }
+   .footer__icon:hover { 
+      color: ${config.color3};
+   }
+`;
+
+const P = styled.p`
+   font-size: 30px;
+   font-weight: 400;
 `;
 
 const Aside = styled.aside`
@@ -64,3 +80,4 @@ const Aside = styled.aside`
 `;
 
 export default Footer
+

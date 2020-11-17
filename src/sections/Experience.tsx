@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import * as config from '../config';
+
 import Button from '../components/Button';
 import SubHeader from '../components/SubHeader';
+
+
+
 
 interface Props {
    id?: string,
 }
 
 function Experience(props: Props) {
-   const { id } = props
+   const { id } = props;
 
    return (
       <EXPERIENCE id={id}>
@@ -34,6 +39,7 @@ function Experience(props: Props) {
 }
 
 const EXPERIENCE = styled.section`
+   position: relative;
    display: flex;
 `;
 

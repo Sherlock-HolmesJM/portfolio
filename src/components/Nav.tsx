@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import MenuItem from './MenuItem';
-import log from '../logger';
 
 interface Props { 
    sticky?: boolean,

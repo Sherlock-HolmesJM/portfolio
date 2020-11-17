@@ -31,7 +31,7 @@ function Range(props: Props) {
 const Container = styled.div`
    // width: 600px;
    width: 100%;
-   margin: 10px 0;
+   margin: 20px 0;
    border-radius: 15px;
    color: ${config.color5};
 `;
