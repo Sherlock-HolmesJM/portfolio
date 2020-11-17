@@ -13,10 +13,12 @@ import project_3 from '../images/project-3.jpg';
 import project_4 from '../images/project-4.jpg';
 import project_5 from '../images/project-5.jpg';
 
-interface Props {}
+interface Props {
+   id?: string,
+}
 
 function Portfolio(props: Props) {
-   // const {} = props
+   const { id } = props
 
    const images = [project_1, project_2, project_3, project_4, project_5];
 
@@ -31,20 +33,20 @@ function Portfolio(props: Props) {
       setPage([prev + newDirection, mid + newDirection, next + newDirection, newDirection]);
    };
 
-   const variants = {
-      enter: (direction: number) => ({ 
-         // x: direction > 0 ? 100 : -100,
-      }),
-      center: {
-         // x: 0,
-      },
-      exit: (direction: number) => ({
-         // x: direction > 0 ? 100 : -100,
-      })
-   };
+   // const variants = {
+   //    enter: (direction: number) => ({ 
+   //       // x: direction > 0 ? 100 : -100,
+   //    }),
+   //    center: {
+   //       // x: 0,
+   //    },
+   //    exit: (direction: number) => ({
+   //       // x: direction > 0 ? 100 : -100,
+   //    })
+   // };
 
    return (
-      <PORTFOLIO>
+      <PORTFOLIO id={id}>
 
          <Aside></Aside>
 

@@ -1,15 +1,14 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import log from '../logger';
-import { color1, color2, color3, color4 } from '../config';
+import { color1, color3, color4 } from '../config';
 
 interface Props {
    name: string,
    path?: string,
    active: boolean,
    index: number,
-   sticky: boolean,
+   sticky?: boolean,
 
    toggleActive: (e: any) => void
 }
@@ -37,10 +36,10 @@ function MenuItem(props: Props) {
 
    return (
       <Li className="li" variants={variants}>
-         <A href="./#" className="li__a" 
+         <A href={`#${name.toLowerCase()}`} className="li__a" 
             data-index={index} 
             active={active}
-            sticky={sticky}
+            sticky={(sticky as boolean)}
             onClick={toggleActive}
          >
             {name}

@@ -5,7 +5,7 @@ import MenuItem from './MenuItem';
 import log from '../logger';
 
 interface Props { 
-   sticky: boolean,
+   sticky?: boolean,
  }
 
 function Nav(props: Props) {

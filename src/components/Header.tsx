@@ -6,7 +6,8 @@ import Nav from './Nav';
 import logo from '../logo.svg';
 import * as config from '../config';
 
-interface Props { 
+interface Props {
+   id?: string,
    matches: boolean,
 }
 

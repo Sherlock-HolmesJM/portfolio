@@ -5,13 +5,15 @@ import Range from '../components/Range';
 import SubHeader from '../components/SubHeader';
 import * as config from '../config';
 
-interface Props {}
+interface Props {
+   id?: string,
+}
 
 function About(props: Props) {
-   // const {} = props
+   const { id } = props
 
    return (
-      <ABOUT>
+      <ABOUT id={id}>
          <Aside></Aside>
 
          <Main>
@@ -74,6 +76,8 @@ const HeroFrame2 = styled(HeroFrame)`
    transform: skewY(10deg);
 `;
 const Hero = styled.img`
+   position: absolute;
+   bottom: 35px;
    width: 500px;
 `;
 

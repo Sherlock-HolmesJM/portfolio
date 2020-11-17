@@ -7,11 +7,12 @@ import Button from '../components/Button';
 import { color1, color2, color3, color5 } from '../config';
 
 interface Props {
+   id?: string,
    matches: boolean
 }
 
 function Home(props: Props) {
-   const { matches } = props;
+   const { id, matches } = props;
 
    const ref = useCallback(node => {
       if (node) log(node.offsetTop);
@@ -48,7 +49,7 @@ function Home(props: Props) {
    }
 
    return (
-      <HomeComp ref={ref} matches={matches}>
+      <HomeComp id={id} ref={ref} matches={matches}>
          <AsideDiv></AsideDiv>
          <MainDiv>
             <MainDivItem1 variants={mainDivVariants} initial="start" animate="end">

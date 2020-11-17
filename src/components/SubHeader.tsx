@@ -3,32 +3,35 @@ import styled from 'styled-components';
 import * as config from '../config';
 
 interface Props {
-   name: string,
+   name?: string,
    caption: string,
    center?: boolean,
+   className?: string,
+   color?: string,
 }
 
 function SubHeader(props: Props) {
-   const { name, caption, center } = props
+   const { name, caption, center, color } = props
 
    return (
-      <Div center={center}>
+      <Div center={center} color={color}>
          <H3>{name}</H3>
-         <H2>{caption}</H2>
-         <Span></Span>
+         <H2 color={color}>{caption}</H2>
+         <Span color={color}></Span>
       </Div>
    )
 }
 
 const Div = styled.div<{ center?: boolean }>`
    text-align: ${props => props.center ? 'center' : 'left'};
+   margin-bottom: ${props => props.color ? '' : '70px'};
 `;
 
 const H2 = styled.h2`
    font-size: 35px;
    font-weight: 600;
    margin: 20px 0 10px 0;
-   color: ${config.color4}
+   color: ${props => props.color || config.color4}
 `;
 
 const H3 = styled.h3`
@@ -37,7 +40,7 @@ const H3 = styled.h3`
 
 const Span = styled.span`
    display: inline-block;
-   border: 2px dashed ${config.color3};
+   border: 2px dashed ${props => props.color || config.color3};
    width: 70px;
 `;
 

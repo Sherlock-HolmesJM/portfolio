@@ -18,13 +18,15 @@ const texts = [
 ];
 
 
-interface Props {}
+interface Props {
+   id?: string,
+}
 
 function Service(props: Props) {
-   // const {} = props
+   const { id } = props
 
    return (
-      <SERVICES>
+      <SERVICES id={id}>
          <Aside></Aside>
 
          <Main>
@@ -42,7 +44,6 @@ function Service(props: Props) {
 
 const SERVICES = styled.section`
    display: flex;
-   margin: 20px 0;
    background: ${config.color2};
 `;
 

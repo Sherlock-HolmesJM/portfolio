@@ -4,12 +4,15 @@ import React, { useState } from 'react';
 // import gsap from 'gsap';
 // import scrollTrigger from 'gsap/ScrollTrigger';
 // import Particles from './particles/particles.min.js';
+// import { Switch } from 'react-router';
 import './App.css';
 import Header from './components/Header';
 import Home from './sections/Home';
 import About from './sections/About';
 import Portfolio from './sections/Portfolio';
 import Service from './sections/Service';
+import Experience from './sections/Experience';
+import Footer from './sections/Footer';
 
 function App() {
 
@@ -46,15 +49,19 @@ function App() {
 
   return (
     <div className="App">
-      <Header matches={matches} />
+      <Header id="header" matches={matches} />
 
-      <Home matches={matches} />
+      <Home id="home" matches={matches} />
 
-      <About />
+      <About id="about" />
 
-      <Service />
+      <Service id="services" />
 
-      <Portfolio />
+      <Portfolio id="portfolio" />
+
+      <Experience id="experience" />
+
+      <Footer />
       {/* <canvas ref={canvas} className="background"></canvas> */}
     </div>
   );

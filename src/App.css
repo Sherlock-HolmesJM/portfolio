@@ -5,6 +5,13 @@
    /* box-sizing: border-box; */
 }
 
+.App #about,
+.App #services,
+.App #portfolio,
+.App #experience {
+   padding: 100px 0;
+}
+
 .background {
    position: absolute;
    top: 50px;

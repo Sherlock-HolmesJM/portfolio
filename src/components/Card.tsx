@@ -30,8 +30,8 @@ function Card(props: Props) {
 
 const CARD = styled.div`
    background: ${config.color1};
-   width: 280px;
-   padding: 20px;
+   width: 250px;
+   padding: 30px;
    margin: 10px;
    border: 3px dashed ${config.color6};
    border-radius: 10px;
