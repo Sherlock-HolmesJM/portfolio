@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import Card from '../components/Card';
-import SubHeader from '../components/SubHeader';
 import { AiFillApi } from 'react-icons/ai';
 import { FaCode } from 'react-icons/fa';
 import { MdSlowMotionVideo } from 'react-icons/md';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import * as config from '../config';
+
+import Card from '../components/Card';
+import SubHeader from '../components/SubHeader';
+
+
 
 const captions = ['Frontend Development', 'Rest API Development', 'Web Animation'];
 
@@ -25,6 +31,28 @@ interface Props {
 
 function Service(props: Props) {
    const { className, ref } = props;
+
+   useEffect(() => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.utils.toArray('.card').forEach(child => {
+         
+         gsap.from((child as gsap.TweenTarget), {
+            y: 100,
+            opacity: 0,
+            duration: 0.1
+         });
+         
+         gsap.to((child as gsap.TweenTarget), {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            delay: 0.5
+         });
+
+      });
+
+   });
 
    return (
       <SERVICES id="services" className={className} ref={ref}>

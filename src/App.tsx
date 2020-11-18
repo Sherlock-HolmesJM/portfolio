@@ -17,6 +17,8 @@ import Footer from './sections/Footer';
 
 function App() {
 
+  // gsap.registerPlugin(ScrollTrigger);
+
   const mediaQuery = window.matchMedia('(max-width: 989px)');
   const [matches, setMatches] = useState(mediaQuery.matches);
 

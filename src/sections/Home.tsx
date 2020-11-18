@@ -20,8 +20,6 @@ interface Props {
 function Home(props: Props) {
    const { matches, className } = props;
 
-   gsap.registerPlugin(ScrollTrigger);   
-
    useEffect(() => {
       const tl = gsap.timeline({
          defaults: { 

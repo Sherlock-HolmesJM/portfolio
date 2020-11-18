@@ -12,7 +12,6 @@ interface Props {
 }
 
 function Range(props: Props) {
-   gsap.registerPlugin(ScrollTrigger);
 
    const { id, value, skill } = props;
    const [rate, setRate] = useState({ value: 0 });
@@ -32,14 +31,14 @@ function Range(props: Props) {
       const target = { value: 0 };
 
       gsap.to(target, {
-         scrollTrigger: trigger,
+         ScrollTrigger: trigger,
          value,
          roundProps: 'value',
          onUpdate: () => setRate({ value: target.value })
       });
 
       gsap.to(`#${childId}`, {
-         scrollTrigger: trigger,
+         ScrollTrigger: trigger,
          width: `${value}%`,
       });
 

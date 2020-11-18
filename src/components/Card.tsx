@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import * as config from '../config';
 
 
@@ -16,7 +19,7 @@ function Card(props: Props) {
    const { caption, Icon, text } = props;
 
    return (
-      <CARD>
+      <CARD className="card">
          <IconDiv className="card__iconDiv">
             <Icon className="card__icon" />
          </IconDiv>
