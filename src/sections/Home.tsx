@@ -1,87 +1,92 @@
-import React, { useCallback } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import log from '../logger';
-import hero from '../images/hero.png';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { orshblood, navyblueDark, yellow } from '../config';
+
+// import hero from '../images/hero.png';
+import hero from '../images/solution_mindset.webp';
 import Button from '../components/Button';
-import { color1, color2, color3, color5 } from '../config';
+
+
 
 interface Props {
-   id?: string,
-   matches: boolean
+   matches: boolean,
+   className?: string,
 }
 
 function Home(props: Props) {
-   const { id, matches } = props;
+   const { matches, className } = props;
 
-   const ref = useCallback(node => {
-      if (node) log(node.offsetTop);
+   gsap.registerPlugin(ScrollTrigger);   
+
+   useEffect(() => {
+      const tl = gsap.timeline({
+         defaults: { 
+            ease: 'circ'
+         }
+      });
+
+      gsap.utils.toArray('.tween').forEach((child) => {
+         tl.from((child as gsap.TweenTarget), {
+            y: 30,
+            opacity: 0
+         });
+      });
+
+      tl.from('#hero', {
+         opacity: 1,
+         scale: 0,
+      })
+      .to('#hero', {
+         scale: 1,
+         opacity: 1
+      }, '+=0.5');
+
+      ScrollTrigger.create({ 
+         trigger: '#home',
+         animation: tl,
+         toggleActions: 'play pause resume complete',
+      });
    }, []);
 
-   const mainDivVariants = {
-      end: {
-         transition: { staggerChildren: 0.25 }
-      }
-   };
-
-   const mainDiv1ItemVariantts = {
-      start: { 
-         opacity: 0,
-         y: 50,
-      },
-      end: {
-         opacity: 1,
-         y: 0,
-         transition: { duration: 2 }
-      }
-   };
-
-   const heroVariants = {
-      start: { 
-         x: 100,
-         opacity: 0,
-      },
-      end: {
-         x: 0,
-         opacity: 1,
-         transition: { duration: 2 }
-      }
-   }
-
    return (
-      <HomeComp id={id} ref={ref} matches={matches}>
+      <HomeComp id="home" className={className} matches={matches}>
          <AsideDiv></AsideDiv>
+
          <MainDiv>
-            <MainDivItem1 variants={mainDivVariants} initial="start" animate="end">
-               <H3 variants={mainDiv1ItemVariantts}>Hello I'm</H3>
-               <H2 variants={mainDiv1ItemVariantts}>Justice Ugochukwu</H2>
+            <MainDivItem1 initial="start" animate="end">
+               <H3 className="tween">Hello I'm</H3>
+               <H2 className="tween">Justice Ugochukwu</H2>
 
-               <P2 variants={mainDiv1ItemVariantts}>Freelance Web Developer</P2>
+               <P2 className="tween">Freelance Web Developer</P2>
 
-               <P1 variants={mainDiv1ItemVariantts}>
-                  I have {}
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.
+               <P1 className="tween">
+                  I'd love to work with you with my solution mindset.
                </P1>
 
-               <Button variants={mainDiv1ItemVariantts}>Hire Me</Button>
+               <Button className="tween">Hire Me</Button>
             </MainDivItem1>
-            <MainDivItem2>
-               <Hero src={hero} alt="hero" variants={heroVariants} initial="start" animate="end" />
-            </MainDivItem2>
+
+            <Hero src={hero} id="hero" alt="hero" initial="start" animate="end" />
          </MainDiv>
+
          <AsideDiv></AsideDiv>
       </HomeComp>
    )
 }
 
-const linear_grad = 'linear-gradient(70deg, rgba(246,245,241,1) 50%, rgba(22,165,150,1) 50%, rgba(22,165,150,1) 100%)';
+const linear_grad = `linear-gradient(70deg, ${orshblood} 50%, ${navyblueDark} 50%, ${navyblueDark} 100%)`;
 
 const HomeComp = styled(motion.div)<Props>`
    display: flex;
-   color: ${color5};
-   background: ${({ matches }) => matches ? color2 : linear_grad};
+   color: ${yellow};
+   background: ${({ matches }) => matches ? orshblood : linear_grad};
    background-repeat: no-repeat;
    box-sizing: border-box;
+   min-height: 100vh;
 `;
 
 const MainDiv = styled.div`
@@ -98,7 +103,7 @@ const MainDivItem1 = styled(motion.div)`
    display: flex;
    flex-direction: column;
    justify-content: center;
-   padding-top: 80px;
+   padding-top: 30%;
 
    * {
       margin: 0;
@@ -106,7 +111,7 @@ const MainDivItem1 = styled(motion.div)`
 `;
 
 const H3 = styled(motion.h3)`
-   color: ${color3};
+   color: ${navyblueDark};
    font-size: 30px;
    font-weight: 600;
    letter-spacing: 4px;
@@ -122,7 +127,7 @@ const H2 = styled(motion.h2)`
 const P1 = styled(motion.p)`
    font-size: 16px;
    line-height: 26px;
-   margin-top: 15px;
+   margin: 15px 0;
 `;
 
 const P2 = styled(motion.p)`
@@ -131,15 +136,11 @@ const P2 = styled(motion.p)`
    margin-top: 15px;
 `;
 
-const MainDivItem2 = styled.div`
-   padding-bottom: 0;
-   margin-bottom: 0;
-`;
-
 const Hero = styled(motion.img)`
-   margin-top: 100px;
-   margin-bottom: 0;
-   width: 550px;
+   width: 600px;
+   height: 600px;
+   opacity: 0;
+   transform: translateY(100px);
 `;
 
 const AsideDiv = styled.div`

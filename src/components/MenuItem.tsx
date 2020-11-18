@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { color1, color3, color4 } from '../config';
+import { white, navyblueDark, navyblueLight } from '../config';
 
 interface Props {
    name: string,
@@ -56,15 +56,15 @@ const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
    font-size: 18px;
    font-weight: 600;
    text-decoration: none;
-   color: ${props => props.active ? color3 : props.sticky ? color4 :  color1};
+   color: ${props => props.active ? navyblueDark : props.sticky ? navyblueLight :  white};
    &:hover .li__span {
       border: 1px dashed #fff;
       width: 97%;
    }
 
    @media only screen and (max-width: 989px) {
-      color: ${(props) => props.active ? color3 :  color4};
-      :hover { color: ${color3} }
+      color: ${(props) => props.active ? navyblueDark :  navyblueLight};
+      :hover { color: ${navyblueDark} }
    }
 `;
 

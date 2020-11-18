@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
-import * as config from '../config';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import logo from '../logo.svg';
 import { ImTwitter } from 'react-icons/im';
 // import { FaTelegramPlane } from 'react-icons/fa';
 // import { IoLogoWhatsapp } from 'react-icons/io';
+
+import * as config from '../config';
+
 import Nav from '../components/Nav';
 
-interface Props {}
+
+
+interface Props {
+   className?: string,
+}
 
 function Footer(props: Props) {
-   // const {} = props
+   const { className } = props;
+
+   gsap.registerPlugin(ScrollTrigger);
 
    return (
-      <FOOTER>
+      <FOOTER className={className} >
          <Aside></Aside>
 
          <Main>
@@ -42,7 +52,7 @@ function Footer(props: Props) {
 const FOOTER = styled.div`
    display: flex;
    height: 600px;
-   background: ${config.color2};
+   background: ${config.orshblood};
 `;
 
 const Main = styled.main`
@@ -62,11 +72,11 @@ const MainDIv = styled.div`
    .footer__icon {
       width: 50px;
       height: 50px;
-      color: ${config.color6};
+      color: ${config.purple};
       transition: color .5s ease-in-out;
    }
    .footer__icon:hover { 
-      color: ${config.color3};
+      color: ${config.navyblueDark};
    }
 `;
 

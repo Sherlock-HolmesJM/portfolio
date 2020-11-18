@@ -10,19 +10,20 @@ import SubHeader from '../components/SubHeader';
 
 
 interface Props {
-   id?: string,
+   className?: string,
+   ref?: any,
 }
 
 function Experience(props: Props) {
-   const { id } = props;
+   const { className, ref } = props;
 
    return (
-      <EXPERIENCE id={id}>
+      <EXPERIENCE id="experience" className={className} ref={ref}>
          <Aside></Aside>
 
          <Main>
             <MainDiv>
-               <SubHeader color={config.color1} caption="Have Any Project in Mind?" />
+               <SubHeader color={config.white} caption="Have Any Project in Mind?" />
                <p>
                   <em>Let me take care of the implementation details for you.</em>
                </p>
@@ -47,8 +48,8 @@ const Main = styled.main`
    flex-basis: 90%;
    display: flex;
    justify-content: space-between;
-   background: ${config.color3};
-   color: ${config.color1};
+   background: ${config.navyblueDark};
+   color: ${config.white};
    padding: 10px 60px;
    border-radius: 14px;
    height: 200px;
@@ -71,8 +72,8 @@ const MainDiv2 = styled.div`
    align-items: center;
 
    .experience__button {
-      background: ${config.color1};
-      color: ${config.color3};
+      background: ${config.white};
+      color: ${config.navyblueDark};
    }
 `;
 

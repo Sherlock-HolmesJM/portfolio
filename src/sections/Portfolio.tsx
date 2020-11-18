@@ -15,10 +15,12 @@ import project_5 from '../images/project-5.jpg';
 
 interface Props {
    id?: string,
+   className?: string,
+   ref?: any,
 }
 
 function Portfolio(props: Props) {
-   const { id } = props
+   const { id, className, ref } = props;
 
    const images = [project_1, project_2, project_3, project_4, project_5];
 
@@ -46,7 +48,7 @@ function Portfolio(props: Props) {
    // };
 
    return (
-      <PORTFOLIO id={id}>
+      <PORTFOLIO id="portfolio" className={className} ref={ref}>
 
          <Aside></Aside>
 
@@ -106,7 +108,7 @@ const ProjectContainer = styled(motion.div)`
       height: 30px;
       transition: color .4s ease-in-out;
 
-      :hover { color: ${config.color3} }
+      :hover { color: ${config.navyblueDark} }
    }
 `;
 

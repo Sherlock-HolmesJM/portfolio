@@ -1,39 +1,72 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 import * as config from '../config';
 
 interface Props {
    id?: string,
-   className?: string,
-   value: number | string,
+   value: number,
    skill: string
 }
 
 function Range(props: Props) {
-   const { id, value, skill } = props
+   gsap.registerPlugin(ScrollTrigger);
+
+   const { id, value, skill } = props;
+   const [rate, setRate] = useState({ value: 0 });
+
+   const childId = 'bar' + Math.round((Math.random() * value));
+
+   useEffect(() => {
+
+      gsap.defaults({ ease: 'circ', duration: 5 });
+
+      const trigger = {
+         trigger: `#${childId}`,
+         start: 'top 90%',
+         toggleActions: 'play pause resume complete',
+      };
+
+      const target = { value: 0 };
+
+      gsap.to(target, {
+         scrollTrigger: trigger,
+         value,
+         roundProps: 'value',
+         onUpdate: () => setRate({ value: target.value })
+      });
+
+      gsap.to(`#${childId}`, {
+         scrollTrigger: trigger,
+         width: `${value}%`,
+      });
+
+   }, [value]);
 
    return (
-      <Container id={id}>
+      <Skill id={id}>
          <Div>
             {skill}
          </Div>
 
          <SkillbarContainer>
-            <Skillbar value={value}>
+            <Skillbar id={childId} value={value}>
                <SkillbarCap />
             </Skillbar> 
-            <SkillPercentage>{value}%</SkillPercentage>
+            <SkillPercentage>{rate.value}%</SkillPercentage>
          </SkillbarContainer>
-      </Container>
+      </Skill>
    )
 }
 
-const Container = styled.div`
+const Skill = styled.div`
    // width: 600px;
    width: 100%;
    margin: 20px 0;
    border-radius: 15px;
-   color: ${config.color5};
+   color: ${config.purple};
 `;
 
 const Div = styled.div`
@@ -42,7 +75,7 @@ const Div = styled.div`
 
 const SkillbarContainer = styled.div`
    position: relative;
-   background: ${config.color6};
+   background: ${config.purple};
    width: 550px;
    height: 9px;
 `;
@@ -51,8 +84,9 @@ const Skillbar = styled.div<{ value: string | number}>`
    position: absolute;
    top: 0;
    height: 9px;
-   width: ${prop => prop.value}%;
-   background-color: ${config.color3};
+   width: 0;
+   // width: ${prop => prop.value}%; gsap handles this part
+   background-color: ${config.navyblueDark};
    border-radius: 15px;
 `;
 
@@ -62,8 +96,8 @@ const SkillbarCap = styled.div`
    right: 0;
    height: 14px;
    width: 3px;
-   background-color: ${config.color1};
-   border: 2px solid ${config.color3};
+   background-color: ${config.white};
+   border: 2px solid ${config.navyblueDark};
 `;
 
 const SkillPercentage = styled.span`

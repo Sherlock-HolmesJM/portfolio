@@ -29,27 +29,27 @@ function Card(props: Props) {
 }
 
 const CARD = styled.div`
-   background: ${config.color1};
+   background: ${config.white};
    width: 280px;
    padding: 30px;
    margin: 10px;
-   border: 3px dashed ${config.color6};
+   border: 3px dashed ${config.orshblood};
    border-radius: 10px;
    transition: ${transition};
 
    &:hover { 
-      background: ${config.color3};
-      color: ${config.color1};
-      border: 3px solid ${config.color1};
+      background: ${config.navyblueDark};
+      color: ${config.white};
+      border: 3px solid ${config.white};
    }
 
    &:hover .card__iconDiv {
-      background: ${config.color1};
-      color: ${config.color3};
+      background: ${config.white};
+      color: ${config.navyblueDark};
    }
 
    &:hover .card__caption, &:hover .card__text {
-      color: ${config.color1};
+      color: ${config.white};
    }
 `;
 
@@ -60,8 +60,8 @@ const IconDiv = styled.div`
    height: 80px;
    font-size: 46px;
    line-height: 40px;
-   background: ${config.color3};
-   color: ${config.color1};
+   background: ${config.navyblueDark};
+   color: ${config.white};
    text-align: center;
    border-radius: 30px;
    border-bottom-right-radius: 0px;
@@ -76,12 +76,12 @@ const IconDiv = styled.div`
 `;
 
 const Caption = styled.h2`
-   color: ${config.color4};
+   color: ${config.navyblueLight};
    transition: ${transition};
 `;
 
 const Text = styled.p`
-   color: ${config.color5};
+   color: ${config.orshblood};
    transition: ${transition};
    font-size: 18px;
    font-weight: 400px;

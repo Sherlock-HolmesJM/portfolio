@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 
-// import gsap from 'gsap';
-// import scrollTrigger from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 // import log from './logger';
 
@@ -15,8 +15,6 @@ import Service from './sections/Service';
 import Experience from './sections/Experience';
 import Footer from './sections/Footer';
 
-
-
 function App() {
 
   const mediaQuery = window.matchMedia('(max-width: 989px)');
@@ -28,17 +26,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header id="header" matches={matches} />
+      <Header matches={matches} />
 
-      <Home id="home" matches={matches} />
+      <Home matches={matches} />
 
-      <About id="about" />
+      <About />
 
-      <Service id="services" />
+      <Service />
 
-      <Portfolio id="portfolio" />
+      <Portfolio />
 
-      <Experience id="experience" />
+      <Experience />
 
       <Footer />
     </div>

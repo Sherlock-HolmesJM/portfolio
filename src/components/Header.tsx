@@ -9,6 +9,7 @@ import * as config from '../config';
 interface Props {
    id?: string,
    matches: boolean,
+   className?: string,
 }
 
 function Header(props: Props) {
@@ -73,8 +74,8 @@ const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
    z-index: 111;
 
    &.header--sticky {
-      background: ${config.color1};
-      border: 3px solid ${config.color1};
+      background: ${config.white};
+      border: 3px solid ${config.white};
    }
 `;
 

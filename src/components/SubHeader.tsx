@@ -24,23 +24,23 @@ function SubHeader(props: Props) {
 
 const Div = styled.div<{ center?: boolean }>`
    text-align: ${props => props.center ? 'center' : 'left'};
-   margin-bottom: ${props => props.color ? '' : '70px'};
+   margin-bottom: ${props => props.color ? '' : '60px'};
 `;
 
 const H2 = styled.h2`
    font-size: 35px;
    font-weight: 600;
    margin: 20px 0 10px 0;
-   color: ${props => props.color || config.color4}
+   color: ${props => props.color || config.purple}
 `;
 
 const H3 = styled.h3`
-   color: ${config.color3};
+   color: ${config.navyblueDark};
 `;
 
 const Span = styled.span`
    display: inline-block;
-   border: 2px dashed ${props => props.color || config.color3};
+   border: 2px dashed ${props => props.color || config.navyblueDark};
    width: 70px;
 `;
 

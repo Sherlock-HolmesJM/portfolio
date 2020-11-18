@@ -1,19 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import aboutHero from '../images/about_hero.png';
-import Range from '../components/Range';
-import SubHeader from '../components/SubHeader';
+
 import * as config from '../config';
 
+// import aboutHero from '../images/about_hero.png';
+import aboutHero from '../images/undraw_dev_productivity.png';
+import Range from '../components/Range';
+import SubHeader from '../components/SubHeader';
+
 interface Props {
-   id?: string,
+   className?: string,
+   ref?: any,
 }
 
 function About(props: Props) {
-   const { id } = props
+   const { className, ref } = props;
 
    return (
-      <ABOUT id={id}>
+      <ABOUT id="about" className={className} ref={ref}>
          <Aside></Aside>
 
          <Main>
@@ -26,16 +30,15 @@ function About(props: Props) {
             <MainDiv2>
                   <SubHeader name="About" caption="Why Should You Hire Me?"/>
 
-                  <p>
-                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem recusandae doloremque ex perferendis quo in quia, porro nemo. Enim magni consectetur asperiores dicta recusandae est, ut facilis, iste, molestias vitae ab similique culpa velit neque ea a corporis ipsa accusantium.
-                  </p>
+                  {/* <h3>
+                     My skill set
+                  </h3> */}
                   
-                  <Range skill="JavaScript" value="80" />
-                  <Range skill="ReactJS" value="75" />
-                  <Range skill="NodeJS" value="70" />
-                  <Range skill="HTML5/CSS3" value="76" />
-                  <Range skill="Web Animation" value="60" />
-                  <Range skill="Web Hosting" value="72" />
+                  <Range skill="JavaScript" value={80} />
+                  <Range skill="ReactJS (with Redux...)" value={85} />
+                  <Range skill="NodeJS (with Express...)" value={78} />
+                  <Range skill="HTML5/CSS3" value={81} />
+                  <Range skill="Web Hosting/Backend: Firebase, Heroku, Netlify, Github, Git" value={80} />
             </MainDiv2>
          </Main>
 
@@ -46,6 +49,7 @@ function About(props: Props) {
 
 const ABOUT = styled.div`
    display: flex;
+   background: ${config.white};
 `;
 
 const Main = styled.main`
@@ -56,35 +60,38 @@ const Main = styled.main`
 const MainDiv1 = styled.div`
    flex-basis: 70%;
    position: relative;
+   top: 0;
 `;
 const HeroFrame = styled.div`
    position: absolute;
    bottom: 33px;
-   border: 14px solid ${config.color3};
+   border: 14px solid ${config.navyblueDark};
    border-top: none;
    width: 350px;
    height: 380px;
-   z-index: -111;
+   // z-index: -11;
 `;
 const HeroFrame2 = styled(HeroFrame)`
    height: 412px;
    width: 360px;
    border: none;
-   border-top: 14px solid ${config.color3};
-   border-left: 14px solid ${config.color3};
+   border-top: 14px solid ${config.navyblueDark};
+   border-left: 14px solid ${config.navyblueDark};
    transform: skewY(10deg);
 `;
 const Hero = styled.img`
    position: absolute;
-   bottom: 35px;
-   width: 500px;
+   left: 25px;
+   bottom: 50px;
+   width: 300px;
+   height: 370px;
 `;
 
 const MainDiv2 = styled.div`
    flex-basis: 30%;
 
    p { 
-      color: ${config.color4}
+      color: ${config.navyblueLight}
    }
 `;
 
