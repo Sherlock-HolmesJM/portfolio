@@ -17,7 +17,7 @@ import Footer from './sections/Footer';
 
 function App() {
 
-  // gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
 
   const mediaQuery = window.matchMedia('(max-width: 989px)');
   const [matches, setMatches] = useState(mediaQuery.matches);
@@ -26,21 +26,34 @@ function App() {
     if (matches !== mediaQuery.matches) setMatches(mediaQuery.matches);
   });
 
+  // useEffect(() => {
+
+  //   gsap.utils.toArray('.section').forEach((child) => {
+  //     ScrollTrigger.create({ 
+  //       trigger: child as Element,
+  //       scrub: true,
+  //       pin: true,
+  //       pinSpacing: false,
+  //     })
+  //   });
+
+  // }, []);
+
   return (
     <div className="App">
       <Header matches={matches} />
 
-      <Home matches={matches} />
+      <Home className="section" matches={matches} />
 
-      <About />
+      <About className="section" />
 
-      <Service />
+      <Service className="section"/>
 
-      <Portfolio />
+      <Portfolio className="section" />
 
-      <Experience />
+      <Experience className="section" />
 
-      <Footer />
+      <Footer className="section" />
     </div>
   );
 }

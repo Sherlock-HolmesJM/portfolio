@@ -31,14 +31,14 @@ function Range(props: Props) {
       const target = { value: 0 };
 
       gsap.to(target, {
-         ScrollTrigger: trigger,
+         scrollTrigger: trigger,
          value,
          roundProps: 'value',
          onUpdate: () => setRate({ value: target.value })
       });
 
       gsap.to(`#${childId}`, {
-         ScrollTrigger: trigger,
+         scrollTrigger: trigger,
          width: `${value}%`,
       });
 

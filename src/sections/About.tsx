@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-// import gsap from 'gsap';
+import gsap from 'gsap';
 // import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import * as config from '../config';
@@ -16,6 +16,32 @@ interface Props {
 
 function About(props: Props) {
    const { className } = props;
+
+   useEffect(() => {
+
+      gsap.defaults({ 
+         ease: 'circ',
+         duration: 2.5
+      })
+
+      const trigger = (el: string) => ({
+         trigger: el,
+         toggleActions: 'play pause resume complete',
+      });
+      
+      gsap.from('.about__maindiv1', {
+         scrollTrigger: trigger('.about__maindiv1'),
+         opacity: 0,
+         x: 100
+      });
+      
+      gsap.from('.about__maindiv2', {
+         scrollTrigger: trigger('.about__maindiv2'),
+         opacity: 0,
+         x: -100
+      });
+
+   }, []);
 
    return (
       <ABOUT id="about" className={className}>

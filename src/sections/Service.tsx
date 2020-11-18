@@ -26,36 +26,30 @@ const texts = [
 
 interface Props {
    className?: string,
-   ref?: any,
 }
 
 function Service(props: Props) {
-   const { className, ref } = props;
+   const { className } = props;
 
    useEffect(() => {
-      gsap.registerPlugin(ScrollTrigger);
 
       gsap.utils.toArray('.card').forEach(child => {
-         
-         gsap.from((child as gsap.TweenTarget), {
+         gsap.fromTo(child as gsap.TweenTarget, {
             y: 100,
             opacity: 0,
-            duration: 0.1
-         });
-         
-         gsap.to((child as gsap.TweenTarget), {
+         }, 
+         {
+            scrollTrigger: child as Element,
             y: 0,
             opacity: 1,
             duration: 1,
-            delay: 0.5
          });
-
-      });
+      }, '+=1');
 
    });
 
    return (
-      <SERVICES id="services" className={className} ref={ref}>
+      <SERVICES id="services" className={className}>
          <Aside></Aside>
 
          <Main>
@@ -74,6 +68,7 @@ function Service(props: Props) {
 const SERVICES = styled.section`
    display: flex;
    background: ${config.orshblood};
+   min-height: 100vh;
 `;
 
 const Main = styled.main`

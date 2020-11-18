@@ -51,7 +51,7 @@ function Footer(props: Props) {
 
 const FOOTER = styled.div`
    display: flex;
-   height: 600px;
+   min-height: 100vh;
    background: ${config.orshblood};
 `;
 

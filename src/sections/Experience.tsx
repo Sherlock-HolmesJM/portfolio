@@ -41,7 +41,9 @@ function Experience(props: Props) {
 
 const EXPERIENCE = styled.section`
    position: relative;
+   background: ${config.white};
    display: flex;
+   min-height: 100vh;
 `;
 
 const Main = styled.main`

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
-import * as config from '../config';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
+
+import * as config from '../config';
+
 import Button from '../components/Button';
 import SubHeader from '../components/SubHeader';
 import ProjectImage from '../components/ProjectImage';
@@ -14,13 +16,11 @@ import project_4 from '../images/project-4.jpg';
 import project_5 from '../images/project-5.jpg';
 
 interface Props {
-   id?: string,
    className?: string,
-   ref?: any,
 }
 
 function Portfolio(props: Props) {
-   const { id, className, ref } = props;
+   const { className } = props;
 
    const images = [project_1, project_2, project_3, project_4, project_5];
 
@@ -35,20 +35,8 @@ function Portfolio(props: Props) {
       setPage([prev + newDirection, mid + newDirection, next + newDirection, newDirection]);
    };
 
-   // const variants = {
-   //    enter: (direction: number) => ({ 
-   //       // x: direction > 0 ? 100 : -100,
-   //    }),
-   //    center: {
-   //       // x: 0,
-   //    },
-   //    exit: (direction: number) => ({
-   //       // x: direction > 0 ? 100 : -100,
-   //    })
-   // };
-
    return (
-      <PORTFOLIO id="portfolio" className={className} ref={ref}>
+      <PORTFOLIO id="portfolio" className={className}>
 
          <Aside></Aside>
 
@@ -59,11 +47,14 @@ function Portfolio(props: Props) {
             </Child1>
 
             <Child2>
-               <AnimatePresence initial={false} custom={direction}>
+               <AnimatePresence initial={false} custom={direction} exitBeforeEnter>
                   <ProjectContainer>
-                     <ProjectImage src={images[ind1]} alt="" name="Landing Page" category="Web development"/>
-                     <ProjectImage src={images[ind2]} alt="" name="Landing Page" category="Web development"/>
-                     <ProjectImage src={images[ind3]} alt="" name="Landing Page" category="Web development"/>
+                     <ProjectImage src={images[ind1]} alt="" name="Landing Page" category="Web dev" 
+                                    direction={direction}/>
+                     <ProjectImage src={images[ind2]} alt="" name="Landing Page" category="Web dev" 
+                                    direction={direction}/>
+                     <ProjectImage src={images[ind3]} alt="" name="Landing Page" category="Web dev" 
+                                    direction={direction}/>
                   </ProjectContainer>
                </AnimatePresence>
 
@@ -82,6 +73,8 @@ function Portfolio(props: Props) {
 
 const PORTFOLIO = styled.section`
    display: flex;
+   background: ${config.white};
+   min-height: 100vh;
 `;
 
 const Main = styled.main`
@@ -108,7 +101,7 @@ const ProjectContainer = styled(motion.div)`
       height: 30px;
       transition: color .4s ease-in-out;
 
-      :hover { color: ${config.navyblueDark} }
+      :hover { color: ${config.orshblood} }
    }
 `;
 
