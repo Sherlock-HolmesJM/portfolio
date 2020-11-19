@@ -23,7 +23,7 @@ function Experience(props: Props) {
 
          <Main>
             <MainDiv>
-               <SubHeader color={config.white} caption="Have Any Project in Mind?" />
+               <SubHeader color={config.coolGray} caption="Have Any Project in Mind?" />
                <p>
                   <em>Let me take care of implementation details for you.</em>
                </p>
@@ -43,7 +43,7 @@ function Experience(props: Props) {
 
 const EXPERIENCE = styled.section`
    position: relative;
-   background: ${config.white};
+   background: ${config.coolGray};
    display: flex;
    min-height: 100vh;
 `;
@@ -53,7 +53,7 @@ const Main = styled.main`
    display: flex;
    justify-content: space-between;
    background: ${config.navyblueDark};
-   color: ${config.white};
+   color: ${config.coolGray};
    padding: 10px 60px;
    border-radius: 14px;
    height: 200px;
@@ -76,7 +76,7 @@ const MainDiv2 = styled.div`
    align-items: center;
 
    .experience__button {
-      background: ${config.white};
+      background: ${config.coolGray};
       color: ${config.navyblueDark};
    }
 `;

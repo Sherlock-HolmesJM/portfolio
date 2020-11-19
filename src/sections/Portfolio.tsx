@@ -73,7 +73,7 @@ function Portfolio(props: Props) {
 
 const PORTFOLIO = styled.section`
    display: flex;
-   background: ${config.white};
+   background: ${config.coolGray};
    min-height: 100vh;
 `;
 

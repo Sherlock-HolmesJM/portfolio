@@ -47,7 +47,7 @@ function Card(props: Props) {
 }
 
 const CARD = styled(motion.div)`
-   background: ${config.white};
+   background: ${config.coolGray};
    width: 280px;
    padding: 30px;
    margin: 10px;
@@ -57,17 +57,17 @@ const CARD = styled(motion.div)`
 
    &:hover { 
       background: ${config.navyblueDark};
-      color: ${config.white};
-      border: 3px solid ${config.white};
+      color: ${config.coolGray};
+      border: 3px solid ${config.coolGray};
    }
 
    &:hover .card__iconDiv {
-      background: ${config.white};
+      background: ${config.coolGray};
       color: ${config.navyblueDark};
    }
 
    &:hover .card__caption, &:hover .card__text {
-      color: ${config.white};
+      color: ${config.coolGray};
    }
 `;
 
@@ -79,7 +79,7 @@ const IconDiv = styled.div`
    font-size: 46px;
    line-height: 40px;
    background: ${config.navyblueDark};
-   color: ${config.white};
+   color: ${config.coolGray};
    text-align: center;
    border-radius: 30px;
    border-bottom-right-radius: 0px;

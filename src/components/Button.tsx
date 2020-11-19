@@ -6,7 +6,7 @@ const Button = styled(motion.button)`
    font-family: 'Montserat' sans-serif;
    font-size: 15px;
    padding: 10px;
-   color: ${config.white};
+   color: ${config.coolGray};
    background: ${config.navyblueDark};
    outline: none;
    border: none;

@@ -95,7 +95,7 @@ const SkillbarCap = styled.div`
    right: 0;
    height: 14px;
    width: 3px;
-   background-color: ${config.white};
+   background-color: ${config.coolGray};
    border: 2px solid ${config.navyblueDark};
 `;
 

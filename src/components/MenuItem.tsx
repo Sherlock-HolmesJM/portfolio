@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { white, navyblueDark, navyblueLight } from '../config';
+import { coolGray, navyblueDark, navyblueLight } from '../config';
 
 interface Props {
    name: string,
@@ -58,9 +58,9 @@ const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
    font-size: 18px;
    font-weight: 600;
    text-decoration: none;
-   color: ${props => props.active ? navyblueDark : props.sticky ? navyblueLight :  white};
+   color: ${props => props.active ? navyblueDark : props.sticky ? navyblueLight :  coolGray};
    &:hover .li__span {
-      border: 1px dashed ${white};
+      border: 1px dashed ${coolGray};
       width: 97%;
    }
 

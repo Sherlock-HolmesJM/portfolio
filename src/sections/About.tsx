@@ -76,7 +76,7 @@ function About(props: Props) {
 
 const ABOUT = styled.div`
    display: flex;
-   background: ${config.white};
+   background: ${config.coolGray};
    min-height: 100vh;
 `;
 

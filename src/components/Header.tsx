@@ -75,8 +75,8 @@ const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
    z-index: 111;
 
    &.header--sticky {
-      background: ${config.white};
-      border: 3px solid ${config.white};
+      background: ${config.coolGray};
+      border: 3px solid ${config.coolGray};
    }
 `;
 
