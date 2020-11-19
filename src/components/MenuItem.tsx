@@ -60,7 +60,7 @@ const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
    text-decoration: none;
    color: ${props => props.active ? navyblueDark : props.sticky ? navyblueLight :  white};
    &:hover .li__span {
-      border: 1px dashed #fff;
+      border: 1px dashed ${white};
       width: 97%;
    }
 

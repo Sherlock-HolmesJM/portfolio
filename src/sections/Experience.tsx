@@ -25,12 +25,14 @@ function Experience(props: Props) {
             <MainDiv>
                <SubHeader color={config.white} caption="Have Any Project in Mind?" />
                <p>
-                  <em>Let me take care of the implementation details for you.</em>
+                  <em>Let me take care of implementation details for you.</em>
                </p>
             </MainDiv>
 
             <MainDiv2>
-               <Button className="experience__button">Hire Me!</Button>
+               <Button className="experience__button">
+                  <a href="./#footer">Hire me!</a>
+               </Button>
             </MainDiv2>
          </Main>
 

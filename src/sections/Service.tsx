@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { AiFillApi } from 'react-icons/ai';
 import { FaCode } from 'react-icons/fa';
 import { MdSlowMotionVideo } from 'react-icons/md';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import * as config from '../config';
 
@@ -31,22 +31,17 @@ interface Props {
 function Service(props: Props) {
    const { className } = props;
 
-   useEffect(() => {
-
-      gsap.utils.toArray('.card').forEach(child => {
-         gsap.fromTo(child as gsap.TweenTarget, {
-            y: 100,
-            opacity: 0,
-         }, 
-         {
-            scrollTrigger: child as Element,
-            y: 0,
-            opacity: 1,
-            duration: 1,
-         });
-      }, '+=1');
-
+   const { ref, inView } = useInView({
+      triggerOnce: true
    });
+
+   const variants = {
+      inView: {
+         transition: { 
+            staggerChildren: 0.09
+         }
+      }
+   }
 
    return (
       <SERVICES id="services" className={className}>
@@ -55,7 +50,7 @@ function Service(props: Props) {
          <Main>
             <SubHeader name="Services" caption="Services I Provide" center />
 
-            <CardContainer>
+            <CardContainer ref={ref} variants={variants} initial="initial" animate={inView ? "inView" : ""}>
                { captions.map((caption, i) => <Card key={i} caption={caption} Icon={icons[i]} text={texts[i]}/>)}
             </CardContainer>
          </Main>
@@ -75,7 +70,7 @@ const Main = styled.main`
    flex-basis: 90%;
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled(motion.div)`
    display: flex;
    justify-content: space-around;
    flex-wrap: wrap;

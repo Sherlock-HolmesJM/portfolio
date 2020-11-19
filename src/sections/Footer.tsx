@@ -1,15 +1,14 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import logo from '../logo.svg';
 import { ImTwitter } from 'react-icons/im';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // import { FaTelegramPlane } from 'react-icons/fa';
 // import { IoLogoWhatsapp } from 'react-icons/io';
 
 import * as config from '../config';
 
-import Nav from '../components/Nav';
+import logo from '../logo.svg';
 
 
 
@@ -20,10 +19,8 @@ interface Props {
 function Footer(props: Props) {
    const { className } = props;
 
-   gsap.registerPlugin(ScrollTrigger);
-
    return (
-      <FOOTER className={className} >
+      <FOOTER className={className} id="footer" >
          <Aside></Aside>
 
          <Main>
@@ -32,15 +29,11 @@ function Footer(props: Props) {
             </MainDIv>
 
             <MainDIv className="footer__icons">
-               <ImTwitter className="footer__icon" />
+               <ImTwitter className="footer__icon" onClick={ () => window.location.href = 'https://twitter.com/justice_ugochi'} />
             </MainDIv>
 
             <MainDIv className="footer__emailHolder">
                <P>sherllyj191@gmail.com</P>
-            </MainDIv>
-            
-            <MainDIv className="footer__navHolder">
-               <Nav sticky={true} />
             </MainDIv>
          </Main>
 
@@ -73,10 +66,11 @@ const MainDIv = styled.div`
       width: 50px;
       height: 50px;
       color: ${config.purple};
-      transition: color .5s ease-in-out;
+      transition: all .5s ease-in-out;
    }
    .footer__icon:hover { 
       color: ${config.navyblueDark};
+      transform: rotate(-360deg);
    }
 `;
 

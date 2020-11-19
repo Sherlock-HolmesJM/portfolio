@@ -28,15 +28,13 @@ function App() {
 
   useEffect(() => {
 
-    gsap.utils.toArray('.section').forEach((child) => {
-      ScrollTrigger.create({ 
-        trigger: child as Element,
-        scrub: true,
-        pin: true,
-        pinSpacing: false,
-        onEnter: self => console.log(self.pin?.id),
-      })
-    });
+    // gsap.utils.toArray('.section').forEach((child) => {
+    //   ScrollTrigger.create({ 
+    //     trigger: child as Element,
+    //     scrub: 1,
+    //     onEnter: self => console.log(self.pin?.id),
+    //   })
+    // });
 
   }, []);
 

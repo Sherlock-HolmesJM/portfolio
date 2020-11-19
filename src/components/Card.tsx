@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -18,8 +19,22 @@ const transition = 'all .5s ease-in-out;';
 function Card(props: Props) {
    const { caption, Icon, text } = props;
 
+   const variants = {
+      inView: {
+         y: 0,
+         opacity: 1,
+         transition: {
+            duration: 0.5
+         }
+      }, 
+      initial: {
+         opacity: 0,
+         y: 100,
+      }
+   };
+
    return (
-      <CARD className="card">
+      <CARD className="card" variants={variants}>
          <IconDiv className="card__iconDiv">
             <Icon className="card__icon" />
          </IconDiv>
@@ -31,7 +46,7 @@ function Card(props: Props) {
    )
 }
 
-const CARD = styled.div`
+const CARD = styled(motion.div)`
    background: ${config.white};
    width: 280px;
    padding: 30px;

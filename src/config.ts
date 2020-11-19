@@ -1,4 +1,4 @@
-export const white = '#ffffff';
+export const white = '#e8e8e8';
 export const orshblood = '#fd3a69';
 export const navyblueDark = '#120078';
 export const navyblueLight = '#1f3c88';

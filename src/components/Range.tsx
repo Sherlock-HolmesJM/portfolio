@@ -20,7 +20,7 @@ function Range(props: Props) {
 
    useEffect(() => {
 
-      gsap.defaults({ ease: 'circ', duration: 5 });
+      gsap.defaults({ ease: 'bounce', duration: 5 });
 
       const trigger = {
          trigger: `#${childId}`,

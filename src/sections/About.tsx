@@ -6,7 +6,7 @@ import gsap from 'gsap';
 import * as config from '../config';
 
 // import aboutHero from '../images/about_hero.png';
-import aboutHero from '../images/undraw_dev_productivity.png';
+import aboutHero from '../images/undraw_dev_productivity.webp';
 import Range from '../components/Range';
 import SubHeader from '../components/SubHeader';
 
@@ -96,20 +96,22 @@ const HeroFrame = styled.div`
    border: 14px solid ${config.navyblueDark};
    border-top: none;
    width: 350px;
-   height: 380px;
+   height: 300px;
 `;
 const HeroFrame2 = styled(HeroFrame)`
-   height: 412px;
-   width: 360px;
+   height: 340px;
+   width: 364px;
    border: none;
    border-top: 14px solid ${config.navyblueDark};
    border-left: 14px solid ${config.navyblueDark};
    transform: skewY(10deg);
 `;
 const Hero = styled.img`
-   margin: 70px 0 0 30px;
-   width: 300px;
-   height: 370px;
+   position: absolute;
+   top: 20px;
+   left: -20px;
+   width: 400px;
+   height: 500px;
 `;
 
 const MainDiv2 = styled.div`

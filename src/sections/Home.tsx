@@ -62,7 +62,7 @@ function Home(props: Props) {
                <P2 className="tween">Freelance Web Developer</P2>
 
                <P1 className="tween">
-                  I'd love to work with you with my solution mindset.
+                  <em>Solution mindset.</em>
                </P1>
 
                <Button className="tween">Hire Me</Button>
@@ -136,9 +136,9 @@ const P2 = styled(motion.p)`
 
 const Hero = styled(motion.img)`
    width: 600px;
-   height: 600px;
+   height: 590px;
    opacity: 0;
-   transform: translateY(100px);
+   transform: translateY(94px);
 `;
 
 const AsideDiv = styled.div`
