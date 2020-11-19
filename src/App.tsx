@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -25,18 +25,6 @@ function App() {
   mediaQuery.addEventListener('change', () => {
     if (matches !== mediaQuery.matches) setMatches(mediaQuery.matches);
   });
-
-  useEffect(() => {
-
-    // gsap.utils.toArray('.section').forEach((child) => {
-    //   ScrollTrigger.create({ 
-    //     trigger: child as Element,
-    //     scrub: 1,
-    //     onEnter: self => console.log(self.pin?.id),
-    //   })
-    // });
-
-  }, []);
 
   return (
     <div className="App">

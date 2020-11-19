@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { coolGray, navyblueDark, navyblueLight } from '../config';
+
+import { coolGray, navyblueDark, navyblueLight, purple } from '../config';
+
+import { Context } from '../context';
 
 interface Props {
    name: string,
    path?: string,
-   index: number,
+   index?: number,
    sticky?: boolean,
-
-   toggleActive: (e: any) => void
 }
 
 function MenuItem(props: Props) {
 
-   const { name, index, toggleActive, sticky } = props;
+   const { name, sticky } = props;
 
-   // const active = name.toLocaleLowerCase() === activeSection.toLocaleLowerCase();
-   const active = false;
+   const { activeSection, setActiveSection } = useContext(Context);
+
+   const active = name === activeSection && name !== 'home';
 
    const variants = {
       open: {
@@ -37,10 +39,10 @@ function MenuItem(props: Props) {
    return (
       <Li className="li" variants={variants}>
          <A href={`#${name.toLowerCase()}`} className="li__a" 
-            data-index={index} 
+            data-name={name}
             active={active}
             sticky={(sticky as boolean)}
-            onClick={toggleActive}
+            onClick={e => setActiveSection((e.target as any).dataset.name)}
          >
             {name}
             <Span className="li__span"></Span>
@@ -58,7 +60,9 @@ const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
    font-size: 18px;
    font-weight: 600;
    text-decoration: none;
-   color: ${props => props.active ? navyblueDark : props.sticky ? navyblueLight :  coolGray};
+   text-transform: capitalize;
+   color: ${props => props.active ? purple : props.sticky? navyblueDark :  coolGray};
+
    &:hover .li__span {
       border: 1px dashed ${coolGray};
       width: 97%;

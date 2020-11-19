@@ -1,36 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+import { Context } from '../context'
 
 import MenuItem from './MenuItem';
 
 interface Props { 
    sticky?: boolean,
-   activeId?: string,
  }
 
 function Nav(props: Props) {
    const { sticky } = props;
-   
-   const [activeSection, setActiveSection] = useState('');
-   const items = ['Home', 'About', 'Services', 'Portfolio', 'Experience'];
 
-   const toggleActive = (e: any) => {
-      const index = parseInt(e.target.dataset.index);
-      setActiveSection(items[index]);
-   };
+   const sections = useContext(Context).sections;
 
    const variants = {
       open: {
-         // display: 'block',
          opacity: 1,
          height: 150,
          transition: { staggerChildren: 0.07, stagger: 0.05 }
       },
       closed: {
-         // display: 'none',
          opacity: 0,
          height: 0,
          transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.3 }
@@ -43,11 +34,7 @@ function Nav(props: Props) {
 
    return (
       <Ul className="ul" variants={variants}>
-         {items.map((item, index) => <MenuItem key={index} 
-                                               index={index} 
-                                               name={item}
-                                               sticky={sticky}
-                                               toggleActive={toggleActive} />)}
+         {sections.map((section, index) => <MenuItem key={index} name={section} sticky={sticky} />)}
       </Ul>
    )
 }
