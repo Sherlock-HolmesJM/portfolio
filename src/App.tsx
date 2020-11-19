@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -26,18 +26,19 @@ function App() {
     if (matches !== mediaQuery.matches) setMatches(mediaQuery.matches);
   });
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   gsap.utils.toArray('.section').forEach((child) => {
-  //     ScrollTrigger.create({ 
-  //       trigger: child as Element,
-  //       scrub: true,
-  //       pin: true,
-  //       pinSpacing: false,
-  //     })
-  //   });
+    gsap.utils.toArray('.section').forEach((child) => {
+      ScrollTrigger.create({ 
+        trigger: child as Element,
+        scrub: true,
+        pin: true,
+        pinSpacing: false,
+        onEnter: self => console.log(self.pin?.id),
+      })
+    });
 
-  // }, []);
+  }, []);
 
   return (
     <div className="App">

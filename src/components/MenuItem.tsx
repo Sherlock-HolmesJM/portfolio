@@ -6,7 +6,6 @@ import { white, navyblueDark, navyblueLight } from '../config';
 interface Props {
    name: string,
    path?: string,
-   active: boolean,
    index: number,
    sticky?: boolean,
 
@@ -15,7 +14,10 @@ interface Props {
 
 function MenuItem(props: Props) {
 
-   const { name, active, index, toggleActive, sticky } = props;
+   const { name, index, toggleActive, sticky } = props;
+
+   // const active = name.toLocaleLowerCase() === activeSection.toLocaleLowerCase();
+   const active = false;
 
    const variants = {
       open: {

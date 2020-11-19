@@ -10,6 +10,7 @@ interface Props {
    id?: string,
    matches: boolean,
    className?: string,
+   activeSection?: string,
 }
 
 function Header(props: Props) {
