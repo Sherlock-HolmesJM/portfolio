@@ -17,23 +17,20 @@ const Context = React.createContext({} as State);
 
 class Provider extends Component<Props, State> {
    constructor(props: Props) {
-      super(props)
+      super(props);
 
       this.state = {
          activeSection: '',
          sections: ['home', 'about', 'services', 'portfolio', 'experience'],
 
          setActiveSection: this.setActiveSection,
-      }
+      };
    };
 
-   setActiveSection = (section: string) => {
-      this.setState({ 
-         activeSection: section.toLocaleLowerCase()
-      });
-   };
+   setActiveSection = (section: string) => { this.setState({ activeSection: section.toLocaleLowerCase() }) };
 
    componentDidMount() {
+
       gsap.utils.toArray('.section').forEach((child) => {
          ScrollTrigger.create({ 
             trigger: child as Element,
@@ -44,7 +41,8 @@ class Provider extends Component<Props, State> {
             onEnter: self => this.setActiveSection(self.vars.id as string),
             onEnterBack: self => this.setActiveSection(self.vars.id as string),
          })
-      });
+      })
+
    };
 
    render() {

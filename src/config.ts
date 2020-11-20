@@ -4,6 +4,7 @@ export const navyblueDark = '#120078';
 export const navyblueLight = '#1f3c88';
 export const yellow = '#fecd1a';
 export const purple = '#9d0191';
+// export const lightpurple = '#595b83';
 
 // export const color1 = '#ffffff';
 // export const color2 = 'rgba(246,245,241)';
