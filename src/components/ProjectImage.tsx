@@ -7,11 +7,12 @@ interface Props {
    alt: string,
    name: string,
    category: string,
-   direction?: number
+   direction?: number,
+   className?: string,
 }
 
 function ProjectImage(props: Props) {
-   const { src, alt, name, category, direction } = props;
+   const { src, alt, name, category, direction, className } = props;
 
    const num = 300;
 
@@ -31,7 +32,7 @@ function ProjectImage(props: Props) {
    };
 
    return (
-         <Div variants={variants} custom={direction} initial="enter" animate="center" exit="exit"
+         <Div className={className} variants={variants} custom={direction} initial="enter" animate="center" exit="exit"
                transition={{x: { type: 'spring', stiffness: 300, damping: 30}, opacity: { duration: 0.2}}}
          >
             <Img src={src} alt={alt} />
@@ -49,6 +50,8 @@ const Div = styled(motion.div)`
 const Img = styled.img`
    width: 350px;
    height: 300px;
+   // width: 100%;
+   // height: 100%;
 `;
 
 const H3 = styled.h3`

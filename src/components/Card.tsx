@@ -2,14 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-import * as config from '../config';
+import { colors } from '../config';
 
 
 interface Props {
    caption: string,
    text: string,
    Icon: any
-
 }
 
 const transition = 'all .5s ease-in-out;';
@@ -45,27 +44,27 @@ function Card(props: Props) {
 }
 
 const CARD = styled(motion.div)`
-   background: ${config.coolGray};
+   background: ${colors.coolGray};
    width: 280px;
-   padding: 30px;
+   padding: min(5%, 30px);
    margin: 10px;
-   border: 3px dashed ${config.orshblood};
+   border: 3px dashed ${colors.orshblood};
    border-radius: 10px;
    transition: ${transition};
 
    &:hover { 
-      background: ${config.navyblueDark};
-      color: ${config.coolGray};
-      border: 3px solid ${config.coolGray};
+      background: ${colors.navyblueDark};
+      color: ${colors.coolGray};
+      border: 3px solid ${colors.coolGray};
    }
 
    &:hover .card__iconDiv {
-      background: ${config.coolGray};
-      color: ${config.navyblueDark};
+      background: ${colors.coolGray};
+      color: ${colors.navyblueDark};
    }
 
    &:hover .card__caption, &:hover .card__text {
-      color: ${config.coolGray};
+      color: ${colors.coolGray};
    }
 `;
 
@@ -76,8 +75,8 @@ const IconDiv = styled.div`
    height: 80px;
    font-size: 46px;
    line-height: 40px;
-   background: ${config.navyblueDark};
-   color: ${config.coolGray};
+   background: ${colors.navyblueDark};
+   color: ${colors.coolGray};
    text-align: center;
    border-radius: 30px;
    border-bottom-right-radius: 0px;
@@ -92,12 +91,12 @@ const IconDiv = styled.div`
 `;
 
 const Caption = styled.h2`
-   color: ${config.navyblueLight};
+   color: ${colors.navyblueLight};
    transition: ${transition};
 `;
 
 const Text = styled.p`
-   color: ${config.orshblood};
+   color: ${colors.orshblood};
    transition: ${transition};
    font-size: 18px;
    font-weight: 400px;

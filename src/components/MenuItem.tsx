@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-import { coolGray, navyblueDark, navyblueLight, purple } from '../config';
+import { colors } from '../config';
 
 import { Context } from '../context';
 
@@ -61,16 +61,16 @@ const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
    font-weight: 600;
    text-decoration: none;
    text-transform: capitalize;
-   color: ${props => props.active ? purple : props.sticky? navyblueDark :  coolGray};
+   color: ${props => props.active ? colors.purple : props.sticky? colors.navyblueDark :  colors.coolGray};
 
    &:hover .li__span {
-      border: 1px dashed ${coolGray};
+      border: 1px dashed ${colors.coolGray};
       width: 97%;
    }
 
    @media only screen and (max-width: 989px) {
-      color: ${(props) => props.active ? navyblueDark :  navyblueLight};
-      :hover { color: ${navyblueDark} }
+      color: ${(props) => props.active ? colors.navyblueDark :  colors.navyblueLight};
+      :hover { color: ${colors.navyblueDark} }
    }
 `;
 

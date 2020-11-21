@@ -4,11 +4,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
-import * as config from '../config';
+import { colors } from '../config';
 
 import Button from '../components/Button';
 import SubHeader from '../components/SubHeader';
 import ProjectImage from '../components/ProjectImage';
+import Aside from '../components/Aside';
 import project_1 from '../images/project-1.jpg';
 import project_2 from '../images/project-2.jpg';
 import project_3 from '../images/project-3.jpg';
@@ -43,20 +44,21 @@ function Portfolio(props: Props) {
          <Main>
             <Child1>
                <SubHeader name="Portfolio" caption="Latest Projects" />
-               <Button>All Projects</Button>
+               {/* <Button>All Projects</Button> */}
             </Child1>
 
             <Child2>
-               <AnimatePresence initial={false} custom={direction} exitBeforeEnter>
-                  <ProjectContainer>
-                     <ProjectImage src={images[ind1]} alt="" name="Landing Page" category="Web dev" 
-                                    direction={direction}/>
-                     <ProjectImage src={images[ind2]} alt="" name="Landing Page" category="Web dev" 
-                                    direction={direction}/>
-                     <ProjectImage src={images[ind3]} alt="" name="Landing Page" category="Web dev" 
-                                    direction={direction}/>
-                  </ProjectContainer>
-               </AnimatePresence>
+               {/* <AnimatePresence initial={false} custom={direction} exitBeforeEnter> */}
+               {/* <ProjectContainer className="portfolio__slickSlider">
+                  
+                  <ProjectImage className="portfolio__img" src={images[ind1]} alt="" name="Landing Page" category="Web dev" 
+                                 direction={direction}/>
+                  <ProjectImage src={images[ind2]} alt="" name="Landing Page" category="Web dev" 
+                                 direction={direction}/>
+                  <ProjectImage src={images[ind3]} alt="" name="Landing Page" category="Web dev" 
+                                 direction={direction}/>
+               </ProjectContainer> */}
+               {/* </AnimatePresence> */}
 
                <ProjectContainer>
                   <HiOutlineChevronLeft className="portfolio__icon" onClick={() => paginate(-1)} />
@@ -73,7 +75,7 @@ function Portfolio(props: Props) {
 
 const PORTFOLIO = styled.section`
    display: flex;
-   background: ${config.coolGray};
+   background: ${colors.coolGray};
    min-height: 100vh;
 `;
 
@@ -88,25 +90,29 @@ const Child1 = styled.div`
 `;
 
 const Child2 = styled.div`
-
+   position: relative;
+   background: blue;
 `;
 
 const ProjectContainer = styled(motion.div)`
-   overflow: hidden;
+   position: absolute;
    display: flex;
    justify-content: center;
+   background: orange;
+   // width: 100%;
+
+   &.portfolio__slickSlider {
+      overflow: scroll;
+      width: 300px;
+   }
 
    .portfolio__icon {
       width: 30px;
       height: 30px;
       transition: color .4s ease-in-out;
 
-      :hover { color: ${config.orshblood} }
+      :hover { color: ${colors.orshblood} }
    }
-`;
-
-const Aside = styled.aside`
-   flex-basis: 10%;
 `;
 
 export default Portfolio

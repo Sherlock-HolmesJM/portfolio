@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { motion, useCycle } from 'framer-motion';
 import styled from 'styled-components';
+
 import { MenuToggle } from './MenuToggle';
 import Nav from './Nav';
 import logo from '../logo.svg';
-import * as config from '../config';
+import Aside from '../components/Aside';
+
+import { colors } from '../config';
 
 interface Props {
-   id?: string,
    matches: boolean,
-   className?: string,
-   activeSection?: string,
 }
 
 function Header(props: Props) {
@@ -40,7 +40,7 @@ function Header(props: Props) {
    }
 
    return (
-      <HeaderComp layout transition={{ duration: 0.4 }}
+      <HeaderComp layout transition={{ duration: 0.5 }}
          className={sticky ? 'header--sticky' : ''}
          initial={false}
          animate={!matches ? "keep" : isOpen ? "open" : "closed"}
@@ -67,16 +67,15 @@ function Header(props: Props) {
 }
 
 const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
-   position: ${({matches, sticky}) => sticky ? 'sticky' : matches ? 'static' : 'absolute'};
+   position: ${props => props.sticky ? 'sticky' : 'absolute'};
    top: 0;
    display: flex;
-   height: ${({sticky}) => sticky ? '50px' : '60px'};
-   width: ${({matches, sticky}) => sticky ? '' : matches ? '' : '97.2vw'};
+   height: 47px;
+   width: 100%;;
    z-index: 111;
 
    &.header--sticky {
-      background: ${config.coolGray};
-      border: 3px solid ${config.coolGray};
+      background: ${colors.coolGray};
    }
 `;
 
@@ -85,7 +84,6 @@ const Div = styled.div`
 `;
 
 const Img = styled(motion.img)`
-   // float: left;
    padding-top: 15px;
 `;
 
@@ -93,10 +91,6 @@ const Main = styled.main`
    flex-basis: 90%;
    display: flex;
    justify-content: space-between;
-`;
-
-const Aside = styled.aside`
-   flex-basis: 10%;
 `;
 
 export default Header;

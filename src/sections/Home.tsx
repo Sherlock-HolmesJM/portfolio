@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { orshblood, navyblueDark, yellow } from '../config';
+import { colors, mediaQueries } from '../config';
 
-// import hero from '../images/hero.png';
 import hero from '../images/solution_mindset.webp';
 import Button from '../components/Button';
+import Aside from '../components/Aside';
 
 
 
@@ -27,63 +27,64 @@ function Home(props: Props) {
          }
       });
 
-      gsap.utils.toArray('.tween').forEach((child) => {
-         tl.from((child as gsap.TweenTarget), {
-            y: 30,
-            opacity: 0
-         });
-      });
+      // gsap.utils.toArray('.tween').forEach((child) => {
+      //    tl.from((child as gsap.TweenTarget), {
+      //       y: 30,
+      //       opacity: 0
+      //    });
+      // });
 
-      tl.from('#hero', {
-         opacity: 1,
-         scale: 0,
-      })
-      .to('#hero', {
-         scale: 1,
-         opacity: 1
-      }, '+=0.5');
+      // tl.from('#hero', {
+      //    opacity: 1,
+      //    scale: 0,
+      // })
+      // .to('#hero', {
+      //    scale: 1,
+      //    opacity: 1
+      // }, '+=0.5');
 
-      ScrollTrigger.create({ 
-         trigger: '#home',
-         animation: tl,
-         toggleActions: 'play pause resume complete',
-      });
+      // ScrollTrigger.create({ 
+      //    trigger: '#home',
+      //    animation: tl,
+      //    toggleActions: 'play pause resume complete',
+      // });
    }, []);
 
    return (
       <HomeComp id="home" className={className} matches={matches}>
-         <AsideDiv></AsideDiv>
+         <Aside></Aside>
 
          <MainDiv>
-            <MainDivItem1 initial="start" animate="end">
+            <MainDivItem1 className="home__item1" initial="start" animate="end">
                <H3 className="tween">Hello I'm</H3>
                <H2 className="tween">Justice Ugochukwu</H2>
 
                <P2 className="tween">Freelance Web Developer</P2>
 
                <P1 className="tween">
-                  <em>Solution mindset.</em>
+                  <code> Solution mindset </code>
                </P1>
 
-               <Button className="tween">Hire Me</Button>
+               <Button className="tween" whileTap={{scale: 0.90}} whileHover={{scale: 1.05}}> 
+                  <a href="#footer" className="home__hireMe">Hire Me</a> 
+               </Button>
             </MainDivItem1>
 
-            <Hero src={hero} id="hero" alt="hero" initial="start" animate="end" />
+            <Hero className="home__hero" src={hero} id="hero" alt="hero" initial="start" animate="end" />
          </MainDiv>
 
-         <AsideDiv></AsideDiv>
+         <Aside></Aside>
       </HomeComp>
    )
 }
 
-const linear_grad = `linear-gradient(70deg, ${orshblood} 50%, ${navyblueDark} 50%, ${navyblueDark} 100%)`;
+const linear_grad = `linear-gradient(70deg, ${colors.orshblood} 50%, ${colors.navyblueDark} 50%, ${colors.navyblueDark} 100%)`;
 
 const HomeComp = styled(motion.div)<Props>`
    display: flex;
-   color: ${yellow};
-   background: ${({ matches }) => matches ? orshblood : linear_grad};
+   color: ${colors.yellow};
+   background: ${({ matches }) => matches ? colors.orshblood : linear_grad};
    background-repeat: no-repeat;
-   box-sizing: border-box;
    min-height: 100vh;
 `;
 
@@ -92,8 +93,12 @@ const MainDiv = styled.div`
    display: flex;
    justify-content: center;
 
-   @media only screen and (max-width: 989px) {
+   @media only screen and (${mediaQueries.query1}) {
       flex-direction: column;
+
+      .home__hero {
+         display: none;
+      }
    }
 `;
 
@@ -103,13 +108,17 @@ const MainDivItem1 = styled(motion.div)`
    justify-content: center;
    padding-top: 30%;
 
+   .home__hireMe {
+      color: ${colors.yellow};
+   }
+
    * {
       margin: 0;
    }
 `;
 
 const H3 = styled(motion.h3)`
-   color: ${navyblueDark};
+   color: ${colors.navyblueDark};
    font-size: 30px;
    font-weight: 600;
    letter-spacing: 4px;
@@ -140,9 +149,5 @@ const Hero = styled(motion.img)`
    opacity: 0;
    transform: translateY(94px);
 `;
-
-const AsideDiv = styled.div`
-   flex-basis: 10%;
-`
 
 export default Home

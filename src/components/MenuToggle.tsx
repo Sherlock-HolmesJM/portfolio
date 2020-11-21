@@ -1,6 +1,8 @@
-import * as React from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import styled from 'styled-components';
+
+import { colors } from '../config';
 
 const Path = (props: any) => (
   <motion.path
@@ -44,7 +46,13 @@ export const MenuToggle = ({ toggle }: any) => (
 
 const Button = styled.button`
    display: none;
-   z-index: 111;
+   height: 45px;
+   background: ${colors.transparent};
+   border: none;
+   outline: none;
+   padding-top: 15px;
+   
+   z-index: 1;
 
    @media only screen and (max-width: 989px) {
       display: block;

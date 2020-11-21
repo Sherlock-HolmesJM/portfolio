@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import * as config from '../config';
+import { colors } from '../config';
 
 interface Props {
    id?: string,
@@ -61,11 +60,9 @@ function Range(props: Props) {
 }
 
 const Skill = styled.div`
-   // width: 600px;
    width: 100%;
    margin: 20px 0;
-   border-radius: 15px;
-   color: ${config.purple};
+   color: ${colors.purple};
 `;
 
 const Div = styled.div`
@@ -74,8 +71,8 @@ const Div = styled.div`
 
 const SkillbarContainer = styled.div`
    position: relative;
-   background: ${config.purple};
-   width: 550px;
+   background: ${colors.purple};
+   width: 100%;
    height: 9px;
 `;
 
@@ -85,7 +82,7 @@ const Skillbar = styled.div<{ value: string | number}>`
    height: 9px;
    width: 0;
    // width: ${prop => prop.value}%; gsap handles this part
-   background-color: ${config.navyblueDark};
+   background-color: ${colors.navyblueDark};
    border-radius: 15px;
 `;
 
@@ -95,8 +92,8 @@ const SkillbarCap = styled.div`
    right: 0;
    height: 14px;
    width: 3px;
-   background-color: ${config.coolGray};
-   border: 2px solid ${config.navyblueDark};
+   background-color: ${colors.coolGray};
+   border: 2px solid ${colors.navyblueDark};
 `;
 
 const SkillPercentage = styled.span`

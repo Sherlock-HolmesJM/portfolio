@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-import * as config from '../config';
+import { colors, mediaQueries } from '../config';
 
 import Button from '../components/Button';
 import SubHeader from '../components/SubHeader';
 import Tween from '../components/Tween';
+import Aside from '../components/Aside';
 
 
 const texts = ["I've been working really hard to be amongst the best frontend web developers in the world. I really do love working with and bending my solution mindset around data. I love logic"];
@@ -44,18 +45,14 @@ function Experience(props: Props) {
             </motion.div>
 
             <div className="experience__call">
-               <MainDiv>
-                  <SubHeader color={config.coolGray} caption="Have Any Project in Mind?" />
-                  <p>
-                     <em>Let me take care of implementation details for you.</em>
-                  </p>
-               </MainDiv>
+               <SubHeader color={colors.coolGray} caption="Have Any Project in Mind?" />
+               <p>
+                  <em>Let me take care of implementation details for you.</em>
+               </p>
 
-               <MainDiv2>
-                  <Button className="experience__button">
-                     <a href="./#footer">Hire me!</a>
-                  </Button>
-               </MainDiv2>
+               <Button className="experience__button" whileTap={{scale: 0.90}} whileHover={{scale: 1.05}}> 
+                  < a href="#footer" className="button__hireMe">Hire Me!</a> 
+               </Button>
             </div>
          </Main>
 
@@ -66,7 +63,7 @@ function Experience(props: Props) {
 
 const EXPERIENCE = styled.section`
    position: relative;
-   background: ${config.coolGray};
+   background: ${colors.coolGray};
    display: flex;
    min-height: 100vh;
 `;
@@ -75,41 +72,32 @@ const Main = styled.main`
    flex-basis: 90%;
    
    .experience__call {
+      position: relative;
       display: flex;
-      justify-content: space-between;
-      background: ${config.navyblueDark};
-      color: ${config.coolGray};
-      padding: 10px 60px;
+      flex-direction: column;
+      justify-content: center;
+      background: ${colors.navyblueDark};
+      color: ${colors.coolGray};
+      padding: 0 min(5%, 60px) 20px min(5%, 60px);
       border-radius: 14px;
-      height: 200px;
       margin-top: 60px;
    }
-`;
-
-const MainDiv = styled.div`
-   flex-basis: 50%;
-   display: flex;
-   flex-direction: column;
-   // justify-content: center;
-
-   p { 
-      font-size: 18px;
-   }
-`;
-
-const MainDiv2 = styled.div`
-   display: flex;
-   justify-content: center;
-   align-items: center;
 
    .experience__button {
-      background: ${config.coolGray};
-      color: ${config.navyblueDark};
+      position: absolute;
+      right: 60px;
+      background: ${colors.coolGray};
+      color: ${colors.navyblueDark};
    }
-`;
 
-const Aside = styled.aside`
-   flex-basis: 10%;
+   @media only screen and (${mediaQueries.query1}) {
+      .experience__call {
+         // flex-direction: column;
+      }
+      .experience__button {
+         position: static;
+      }
+   }
 `;
 
 export default Experience

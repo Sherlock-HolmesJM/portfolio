@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-import * as config from '../config';
+import { colors, mediaQueries } from '../config';
 
 interface Props {
    left?: boolean,
@@ -15,8 +15,6 @@ interface Props {
 
 function Tween(props: Props) {
    const { left, text, index, period, job, company } = props
-
-   const [height, setHeight] = useState(0);
 
    const number = index < 10 ? '0' + index : index;
 
@@ -35,15 +33,15 @@ function Tween(props: Props) {
 
    return (
       <Card left={left} variants={variants}>
-         <div className="tlcard__text">{text}</div>
-         <div className="tlcard__lineHolder">
-            <div className="tlcard__line"></div>
-            <div className="tlcard__index">{number}</div>
+         <div className="tween__text">{text}</div>
+         <div className="tween__lineHolder">
+            <div className="tween__line"></div>
+            <div className="tween__index">{number}</div>
          </div>
-         <div className="tlcard__header">
-            <h3 className="tlcard__job">{job}</h3>
-            <h4 className="tlcard__company"> <em>{company}</em> </h4>
-            <div className="tlcard__period">{period}</div>
+         <div className="tween__header">
+            <h3 className="tween__job">{job}</h3>
+            <h4 className="tween__company"> <em>{company}</em> </h4>
+            <div className="tween__period">{period}</div>
          </div>
       </Card>
    )
@@ -51,26 +49,26 @@ function Tween(props: Props) {
 
 const Card = styled(motion.div)<{left: boolean | undefined}>`
    display: flex;
-   ${props => props.left ? 'flex-direction: row-reverse' : ''};
+   flex-direction: ${props => props.left ? 'row-reverse' : 'row'};
    justify-content: space-between;
    font-size: 18px;
    font-weight: 600;
-   color: ${config.navyblueLight};
+   color: ${colors.navyblueLight};
 
-   &:hover .tlcard__text, 
-   &:hover .tlcard__index { 
-      color: ${config.coolGray};
-      background: ${config.navyblueDark};
+   &:hover .tween__text, 
+   &:hover .tween__index { 
+      color: ${colors.coolGray};
+      background: ${colors.navyblueDark};
    }
    
-   .tlcard__text {
+   .tween__text {
       flex-basis: 44%;
       padding: 15px;
       border-radius: 10px;
       transition: all .5s ease-in-out;
    }
 
-   .tlcard__header {
+   .tween__header {
       flex-basis: 44%;
       display: flex;
       flex-direction: column;
@@ -79,42 +77,50 @@ const Card = styled(motion.div)<{left: boolean | undefined}>`
       padding: 15px;
       text-transform: capitalize;
    }
-   .tlcard__job {
+   .tween__job {
       margin: 0;
    }
-   .tlcard__company {
+   .tween__company {
       margin: 10px 0;
-      color: ${config.purple};
+      color: ${colors.purple};
    }
 
-
-   .tlcard__lineHolder {
-      flex-basis: 53px;
+   .tween__lineHolder {
       position: relative;
+      flex-basis: 53px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      min-height: 100%;
+      justify-content: center;
    }
-   .tlcard__line {
+   .tween__line {
       position: absolute;
-      top: 0px;
-      left: 48%;
-      background: ${config.navyblueDark};
-      width: 3px;
+      background: ${colors.navyblueDark};
+      width: 4px;
       min-height: 100%;
    }
-   .tlcard__index {
+   .tween__index {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      border: 3px solid ${config.navyblueDark};
-      background: ${config.coolGray};
+      border: 3px solid ${colors.navyblueDark};
+      background: ${colors.coolGray};
       transition: all .5s ease-in-out;
-      z-index: 111;
+      z-index: 1;
+   }
+
+   @media only screen and (${mediaQueries.query1}) {
+      flex-direction: column;
+
+      .tween__lineHolder {
+         display: none;
+      }
+      .tween__header {
+         order: -1;
+         text-align: left;
+      }
    }
 
 `;

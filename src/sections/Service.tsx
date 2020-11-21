@@ -6,10 +6,11 @@ import { AiFillApi } from 'react-icons/ai';
 import { FaCode } from 'react-icons/fa';
 import { MdSlowMotionVideo } from 'react-icons/md';
 
-import * as config from '../config';
+import { colors } from '../config';
 
 import Card from '../components/Card';
 import SubHeader from '../components/SubHeader';
+import Aside from '../components/Aside';
 
 
 
@@ -62,7 +63,7 @@ function Service(props: Props) {
 
 const SERVICES = styled.section`
    display: flex;
-   background: ${config.orshblood};
+   background: ${colors.orshblood};
    min-height: 100vh;
 `;
 
@@ -75,10 +76,6 @@ const CardContainer = styled(motion.div)`
    justify-content: space-around;
    flex-wrap: wrap;
    margin: 20px 0;
-`;
-
-const Aside = styled.aside`
-   flex-basis: 10%;
 `;
 
 export default Service

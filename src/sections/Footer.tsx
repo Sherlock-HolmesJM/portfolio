@@ -6,9 +6,10 @@ import { ImTwitter } from 'react-icons/im';
 // import { FaTelegramPlane } from 'react-icons/fa';
 // import { IoLogoWhatsapp } from 'react-icons/io';
 
-import * as config from '../config';
+import { colors } from '../config';
 
 import logo from '../logo.svg';
+import Aside from '../components/Aside';
 
 
 
@@ -45,7 +46,7 @@ function Footer(props: Props) {
 const FOOTER = styled.div`
    display: flex;
    min-height: 100vh;
-   background: ${config.orshblood};
+   background: ${colors.orshblood};
 `;
 
 const Main = styled.main`
@@ -65,11 +66,11 @@ const MainDIv = styled.div`
    .footer__icon {
       width: 50px;
       height: 50px;
-      color: ${config.purple};
+      color: ${colors.purple};
       transition: all .5s ease-in-out;
    }
    .footer__icon:hover { 
-      color: ${config.navyblueDark};
+      color: ${colors.navyblueDark};
       transform: rotate(-360deg);
    }
 `;
@@ -77,10 +78,6 @@ const MainDIv = styled.div`
 const P = styled.p`
    font-size: 30px;
    font-weight: 400;
-`;
-
-const Aside = styled.aside`
-   flex-basis: 10%;
 `;
 
 export default Footer

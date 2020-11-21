@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import * as config from '../config';
+
+import { colors } from '../config';
 
 interface Props {
    name?: string,
@@ -31,16 +32,18 @@ const H2 = styled.h2`
    font-size: 35px;
    font-weight: 600;
    margin: 20px 0 10px 0;
-   color: ${props => props.color || config.purple}
+   text-transform: capitalize;
+   color: ${props => props.color || colors.purple}
 `;
 
 const H3 = styled.h3`
-   color: ${config.navyblueDark};
+   color: ${colors.navyblueDark};
+   text-transform: capitalize;
 `;
 
 const Span = styled.span`
    display: inline-block;
-   border: 2px dashed ${props => props.color || config.navyblueDark};
+   border: 2px dashed ${props => props.color || colors.navyblueDark};
    width: 70px;
 `;
 

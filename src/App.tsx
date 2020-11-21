@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// import log from './logger';
 
 import './App.css';
 
@@ -15,11 +12,13 @@ import Service from './sections/Service';
 import Experience from './sections/Experience';
 import Footer from './sections/Footer';
 
+import { mediaQueries } from './config';
+
 function App() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const mediaQuery = window.matchMedia('(max-width: 989px)');
+  const mediaQuery = window.matchMedia(`(${mediaQueries.query1})`);
   const [matches, setMatches] = useState(mediaQuery.matches);
 
   mediaQuery.addEventListener('change', () => {
