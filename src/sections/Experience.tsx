@@ -11,7 +11,10 @@ import Tween from '../components/Tween';
 import Aside from '../components/Aside';
 
 
-const texts = ["I've been working really hard to be amongst the best frontend web developers in the world. I really do love working with and bending my solution mindset around data. I love logic"];
+const texts = [
+   "I've been working really hard to be amongst the best frontend web developers in the world. I really do love working with and bending my solution mindset around data. I love logic.",
+   "I single-handedly engineered the development of the Rest API that powers the Guest page of the Result Management System. Yes, I'm awesome like.",
+   "I enginnered the animation of this portfolio website you are on right now. It's cool, right? Although I couldn't quite get something to work the way I wanted it to. Hmm. What a thing. I've got to find out how. Scroll down."];
 
 
 
@@ -40,8 +43,8 @@ function Experience(props: Props) {
             <motion.div className="experience__timeline" ref={ref} variants={variants} 
                         initial="initial" animate={inView ? 'animate' : ''}>
                <Tween text={texts[0]} job="Web Developer" company="self" index={1} period="2018 - 2020" />
-               <Tween text={texts[0]} job="Rest API Developer" company="self" index={2} period="2019 - 2020" left />
-               <Tween text={texts[0]} job="Web Animator" company="self" index={3} period="2020 - 2020" />
+               <Tween text={texts[1]} job="Rest API Developer" company="self" index={2} period="2019 - 2020" left />
+               <Tween text={texts[2]} job="Web Animator" company="self" index={3} period="2020 - 2020" />
             </motion.div>
 
             <div className="experience__call">

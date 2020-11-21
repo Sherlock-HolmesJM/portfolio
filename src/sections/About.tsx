@@ -61,9 +61,9 @@ function About(props: Props) {
                   <Range skill="JavaScript" value={80} />
                   <Range skill="ReactJS (with Redux...)" value={85} />
                   <Range skill="NodeJS (with Express...)" value={78} />
-                  <Range skill="HTML5/CSS3" value={81} />
-                  <Range skill="Web Animation" value={77} />
+                  <Range skill="HTML5/CSS3" value={82} />
                   <Range skill="Web Hosting/Backend" value={80} />
+                  <Range skill="Web Animation" value={70} />
             </MainDiv2>
          </Main>
 

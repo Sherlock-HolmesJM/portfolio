@@ -27,27 +27,27 @@ function Home(props: Props) {
          }
       });
 
-      // gsap.utils.toArray('.tween').forEach((child) => {
-      //    tl.from((child as gsap.TweenTarget), {
-      //       y: 30,
-      //       opacity: 0
-      //    });
-      // });
+      gsap.utils.toArray('.tween').forEach((child) => {
+         tl.from((child as gsap.TweenTarget), {
+            y: 30,
+            opacity: 0
+         });
+      });
 
-      // tl.from('#hero', {
-      //    opacity: 1,
-      //    scale: 0,
-      // })
-      // .to('#hero', {
-      //    scale: 1,
-      //    opacity: 1
-      // }, '+=0.5');
+      tl.from('#hero', {
+         opacity: 1,
+         scale: 0,
+      })
+      .to('#hero', {
+         scale: 1,
+         opacity: 1
+      }, '+=0.5');
 
-      // ScrollTrigger.create({ 
-      //    trigger: '#home',
-      //    animation: tl,
-      //    toggleActions: 'play pause resume complete',
-      // });
+      ScrollTrigger.create({ 
+         trigger: '#home',
+         animation: tl,
+         toggleActions: 'play pause resume complete',
+      });
    }, []);
 
    return (

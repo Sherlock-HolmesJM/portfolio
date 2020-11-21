@@ -67,14 +67,15 @@ function Header(props: Props) {
 }
 
 const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
-   position: ${props => props.sticky ? 'sticky' : 'absolute'};
+   position: absolute;
    top: 0;
    display: flex;
    height: 47px;
-   width: 100%;;
+   width: 100%;
    z-index: 111;
 
    &.header--sticky {
+      position: sticky;
       background: ${colors.coolGray};
    }
 `;

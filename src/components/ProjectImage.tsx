@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface Props {
    src: any,
@@ -8,62 +8,64 @@ interface Props {
    name: string,
    category: string,
    direction?: number,
-   className?: string,
 }
 
 function ProjectImage(props: Props) {
-   const { src, alt, name, category, direction, className } = props;
+   const { src, alt, name, category, direction } = props;
 
-   const num = 300;
+   // const num = 1000;
 
    const variants = {
-      enter: (direction: number) => ({ 
-         x: direction > 0 ? num : -num,
-         opacity: 0,
-      }),
-      center: {
-         x: 0,
-         opacity: 1,
+      enter: (direction: number) => {
+        return {
+          x: direction > 0 ? 1000 : -1000,
+          opacity: 0
+        };
       },
-      exit: (direction: number) => ({
-         x: direction > 0 ? num : -num,
-         opacity: 0
-      })
-   };
+      center: {
+        zIndex: 1,
+        x: 0,
+        opacity: 1,
+      },
+      exit: (direction: number) => {
+        return {
+          zIndex: 0,
+          x: direction < 0 ? 1000 : -1000,
+          opacity: 0
+        };
+      }
+    };
 
    return (
-         <Div className={className} variants={variants} custom={direction} initial="enter" animate="center" exit="exit"
-               transition={{x: { type: 'spring', stiffness: 300, damping: 30}, opacity: { duration: 0.2}}}
-         >
-            <Img src={src} alt={alt} />
-            <H3>{name}</H3>
-            <P>{category}</P>
+         <Div>
+            <AnimatePresence initial={false} custom={direction}>
+               <motion.img 
+                  className="img"
+                  src={src} 
+                  alt={alt} 
+                  variants={variants} 
+                  custom={direction} 
+                  initial="enter" 
+                  animate="center" 
+                  exit="exit"
+                  transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                     }}
+               />
+            </AnimatePresence>
          </Div>
    )
 }
 
 const Div = styled(motion.div)`
-   position: relative;
    margin: 10px;
-`;
+   width: 100%;
 
-const Img = styled.img`
-   width: 350px;
-   height: 300px;
-   // width: 100%;
-   // height: 100%;
-`;
-
-const H3 = styled.h3`
-   position: absolute;
-   bottom: 20px;
-   left: 5px;
-`;
-
-const P = styled.p`
-   position: absolute;
-   bottom: -5px;
-   left: 5px;
+   .img {
+      height: 400px;
+      width: 100%;
+   }
 `;
 
 export default ProjectImage
