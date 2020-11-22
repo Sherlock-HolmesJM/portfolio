@@ -14,7 +14,7 @@ import Aside from '../components/Aside';
 const texts = [
    "I've been working really hard to be amongst the best frontend web developers in the world. I really do love working with and bending my solution mindset around data. I love logic.",
    "I single-handedly engineered the development of the Rest API that powers the Guest page of the Result Management System. Yes, I'm awesome like.",
-   "I enginnered the animation of this portfolio website you are on right now. It's cool, right? Although I couldn't quite get something to work the way I wanted it to. Hmm. What a thing. I've got to find out how. Scroll down."];
+   "I enginnered the animation of this portfolio website you are on right now. It's cool, right?"];
 
 
 

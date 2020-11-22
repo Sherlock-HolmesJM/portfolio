@@ -58,12 +58,12 @@ function About(props: Props) {
             <MainDiv2 className="about__maindiv2">
                   <SubHeader name="About" caption="Why Hire Me?"/>
                   
-                  <Range skill="JavaScript" value={80} />
-                  <Range skill="ReactJS (with Redux...)" value={85} />
+                  <Range skill="JavaScript" value={85} />
+                  <Range skill="ReactJS (with Redux...)" value={83} />
                   <Range skill="NodeJS (with Express...)" value={78} />
                   <Range skill="HTML5/CSS3" value={82} />
                   <Range skill="Web Hosting/Backend" value={80} />
-                  <Range skill="Web Animation" value={70} />
+                  <Range skill="Web Animation" value={75} />
             </MainDiv2>
          </Main>
 
