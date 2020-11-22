@@ -11,15 +11,16 @@ interface Props {
 }
 
 function ProjectImage(props: Props) {
-   const { src, alt, name, category, direction } = props;
+   const { src, alt, direction } = props;
 
-   // const num = 1000;
+   const num = 1000;
 
    const variants = {
       enter: (direction: number) => {
         return {
-          x: direction > 0 ? 1000 : -1000,
-          opacity: 0
+          x: direction > 0 ? num : -num,
+          opacity: 0,
+          zIndex: 0,
         };
       },
       center: {
@@ -30,42 +31,38 @@ function ProjectImage(props: Props) {
       exit: (direction: number) => {
         return {
           zIndex: 0,
-          x: direction < 0 ? 1000 : -1000,
-          opacity: 0
+          x: direction < 0 ? num : -num,
+          opacity: 0,
+          transition: { duration: 0.2 }
         };
       }
     };
 
    return (
-         <Div>
-            <AnimatePresence initial={false} custom={direction}>
-               <motion.img 
-                  className="img"
-                  src={src} 
-                  alt={alt} 
-                  variants={variants} 
-                  custom={direction} 
-                  initial="enter" 
-                  animate="center" 
-                  exit="exit"
-                  transition={{
-                        x: { type: "spring", stiffness: 300, damping: 30 },
-                        opacity: { duration: 0.2 }
-                     }}
-               />
-            </AnimatePresence>
-         </Div>
+         <AnimatePresence custom={direction} exitBeforeEnter>
+            <Img 
+               key={src}
+               className="img"
+               src={src} 
+               alt={alt} 
+               variants={variants} 
+               custom={direction} 
+               initial="enter" 
+               animate="center" 
+               exit="exit"
+               transition={{
+                     x: { type: "spring", stiffness: 300, damping: 30 },
+                     opacity: { duration: 0.2 }
+                  }}
+            />
+         </AnimatePresence>
    )
 }
 
-const Div = styled(motion.div)`
-   margin: 10px;
+const Img = styled(motion.img)`
+   height: 350px;
    width: 100%;
-
-   .img {
-      height: 400px;
-      width: 100%;
-   }
+   border-radius: 8px 8px 0 0;
 `;
 
 export default ProjectImage

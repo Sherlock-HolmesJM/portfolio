@@ -8,17 +8,14 @@ import { Context } from '../context';
 
 interface Props {
    name: string,
-   path?: string,
-   index?: number,
-   sticky?: boolean,
 }
 
 function MenuItem(props: Props) {
 
-   const { name, sticky } = props;
+   const { name } = props;
 
-   const { activeSection, setActiveSection } = useContext(Context);
-
+   const { activeSection, setActiveSection, toggleOpen, sticky } = useContext(Context);
+   
    const active = name === activeSection && name !== 'home';
 
    const variants = {
@@ -41,8 +38,8 @@ function MenuItem(props: Props) {
          <A href={`#${name.toLowerCase()}`} className="li__a" 
             data-name={name}
             active={active}
-            sticky={(sticky as boolean)}
-            onClick={e => setActiveSection((e.target as any).dataset.name)}
+            sticky={sticky}
+            onClick={e => { setActiveSection((e.target as any).dataset.name); toggleOpen(); } }
          >
             {name}
             <Span className="li__span"></Span>
@@ -61,7 +58,7 @@ const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
    font-weight: 600;
    text-decoration: none;
    text-transform: capitalize;
-   color: ${props => props.active ? colors.purple : props.sticky? colors.navyblueDark :  colors.coolGray};
+   color: ${props => props.active ? colors.purple : props.sticky ? colors.navyblueDark :  colors.coolGray};
 
    &:hover .li__span {
       border: 1px dashed ${colors.coolGray};
@@ -70,7 +67,7 @@ const A = styled(motion.a)<{ active: boolean, sticky: boolean }>`
 
    @media only screen and (max-width: 989px) {
       color: ${(props) => props.active ? colors.navyblueDark :  colors.navyblueLight};
-      :hover { color: ${colors.navyblueDark} }
+      :hover { color: ${colors.purple} }
    }
 `;
 

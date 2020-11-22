@@ -6,12 +6,9 @@ import { Context } from '../context'
 
 import MenuItem from './MenuItem';
 
-interface Props { 
-   sticky?: boolean,
- }
+interface Props { }
 
 function Nav(props: Props) {
-   const { sticky } = props;
 
    const sections = useContext(Context).sections;
 
@@ -34,7 +31,7 @@ function Nav(props: Props) {
 
    return (
       <Ul className="ul" variants={variants}>
-         {sections.map((section, index) => <MenuItem key={index} name={section} sticky={sticky} />)}
+         {sections.map((section, index) => <MenuItem key={index} name={section} />)}
       </Ul>
    )
 }

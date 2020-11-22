@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import { mediaQueries, colors } from './config';
+
 
 
 interface Props {}
@@ -9,8 +11,12 @@ interface Props {}
 interface State {
    sections: string[],
    activeSection: string,
+   isOpen: boolean,
+   matches: boolean,
+   sticky: boolean,
 
    setActiveSection: (section: string) => void,
+   toggleOpen: () => void,
 }
 
 const Context = React.createContext({} as State);
@@ -22,14 +28,39 @@ class Provider extends Component<Props, State> {
       this.state = {
          activeSection: '',
          sections: ['home', 'about', 'services', 'portfolio', 'experience'],
+         isOpen: false,
+         matches: false,
+         sticky: false,
 
          setActiveSection: this.setActiveSection,
+         toggleOpen: this.toggleOpen,
       };
    };
 
    setActiveSection = (section: string) => { this.setState({ activeSection: section.toLocaleLowerCase() }) };
 
+   toggleOpen = () => { this.setState({ isOpen: !this.state.isOpen }) };
+
    componentDidMount() {
+
+      const mediaQuery = window.matchMedia(`(${mediaQueries.query1})`);
+
+      mediaQuery.onchange = () => {
+         this.setState({ matches: mediaQuery.matches, isOpen: false });
+      };
+
+      this.setState({ matches: mediaQuery.matches }); // first call is needed
+
+      gsap.to('#header', {
+         scrollTrigger: {
+            trigger: '#header',
+            start: 'center top',
+            scrub: 1,
+            onUpdate: self => { this.setState({ sticky: self.progress === 1 }) },
+         },
+         position: 'sticky',
+         background: colors.coolGray,
+      });
 
       gsap.utils.toArray('.section').forEach((child) => {
          ScrollTrigger.create({ 

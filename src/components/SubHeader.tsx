@@ -25,7 +25,7 @@ function SubHeader(props: Props) {
 
 const Div = styled.div<{ center?: boolean }>`
    text-align: ${props => props.center ? 'center' : 'left'};
-   margin-bottom: ${props => props.color ? '' : '60px'};
+   margin-bottom: ${props => props.color ? '' : '40px'};
 `;
 
 const H2 = styled.h2`

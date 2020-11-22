@@ -13,12 +13,11 @@ import Aside from '../components/Aside';
 
 
 interface Props {
-   matches: boolean,
    className?: string,
 }
 
 function Home(props: Props) {
-   const { matches, className } = props;
+   const { className } = props;
 
    useEffect(() => {
       const tl = gsap.timeline({
@@ -51,7 +50,7 @@ function Home(props: Props) {
    }, []);
 
    return (
-      <HomeComp id="home" className={className} matches={matches}>
+      <HomeComp id="home" className={className}>
          <Aside></Aside>
 
          <MainDiv>
@@ -80,12 +79,16 @@ function Home(props: Props) {
 
 const linear_grad = `linear-gradient(70deg, ${colors.orshblood} 50%, ${colors.navyblueDark} 50%, ${colors.navyblueDark} 100%)`;
 
-const HomeComp = styled(motion.div)<Props>`
+const HomeComp = styled(motion.div)`
    display: flex;
    color: ${colors.yellow};
-   background: ${({ matches }) => matches ? colors.orshblood : linear_grad};
+   background: ${linear_grad};
    background-repeat: no-repeat;
    min-height: 100vh;
+
+   @media only screen and (${mediaQueries.query1}) {
+      background: ${colors.orshblood};
+   }
 `;
 
 const MainDiv = styled.div`

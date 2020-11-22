@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion, useCycle } from 'framer-motion';
+import React, { useContext } from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 import { MenuToggle } from './MenuToggle';
@@ -7,27 +7,12 @@ import Nav from './Nav';
 import logo from '../logo.svg';
 import Aside from '../components/Aside';
 
-import { colors } from '../config';
+import { Context } from '../context';
 
-interface Props {
-   matches: boolean,
-}
+interface Props {}
 
 function Header(props: Props) {
-   const { matches } = props;
-
-   const [isOpen, toggleOpen] = useCycle(false, true);
-   const [sticky, setSticky] = useState(false);
-
-   window.addEventListener('scroll', () => {
-      if (window.scrollY > 0) {
-        if (sticky === false) {
-           setSticky(true);
-         }
-      } else if (window.scrollY < 2) {
-         setSticky(false);
-      }
-   });
+   const { isOpen, matches } = useContext(Context);
 
    const logoVariants = {
       start: {
@@ -40,13 +25,7 @@ function Header(props: Props) {
    }
 
    return (
-      <HeaderComp layout transition={{ duration: 0.5 }}
-         className={sticky ? 'header--sticky' : ''}
-         initial={false}
-         animate={!matches ? "keep" : isOpen ? "open" : "closed"}
-         sticky={sticky}
-         matches={matches}
-      >
+      <HeaderComp id="header" initial={false} animate={!matches ? "keep" : isOpen ? "open" : "closed"}>
 
          <Aside></Aside>
          
@@ -55,9 +34,9 @@ function Header(props: Props) {
                <Img variants={logoVariants} initial="start" animate="stop" src={logo} alt="logo" />
             </Div>
 
-            <Nav sticky={sticky} />
+            <Nav />
 
-            <MenuToggle toggle={() => toggleOpen() } />
+            <MenuToggle />
          </Main>
 
          <Aside></Aside>
@@ -66,18 +45,13 @@ function Header(props: Props) {
    )
 }
 
-const HeaderComp = styled(motion.header)<{ sticky: boolean, matches: boolean }>`
+const HeaderComp = styled(motion.header)`
    position: absolute;
    top: 0;
    display: flex;
    height: 47px;
    width: 100%;
    z-index: 111;
-
-   &.header--sticky {
-      position: sticky;
-      background: ${colors.coolGray};
-   }
 `;
 
 const Div = styled.div`

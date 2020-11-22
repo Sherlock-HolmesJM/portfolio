@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -12,24 +12,15 @@ import Service from './sections/Service';
 import Experience from './sections/Experience';
 import Footer from './sections/Footer';
 
-import { mediaQueries } from './config';
-
 function App() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  const mediaQuery = window.matchMedia(`(${mediaQueries.query1})`);
-  const [matches, setMatches] = useState(mediaQuery.matches);
-
-  mediaQuery.addEventListener('change', () => {
-    if (matches !== mediaQuery.matches) setMatches(mediaQuery.matches);
-  });
-
   return (
     <div className="App">
-      <Header matches={matches} />
+      <Header />
 
-      <Home className="section" matches={matches} />
+      <Home className="section" />
 
       <About className="section" />
 
