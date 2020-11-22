@@ -9,11 +9,9 @@ import SubHeader from '../components/SubHeader';
 import ProjectImage from '../components/ProjectImage';
 import Aside from '../components/Aside';
 
-import project_1 from '../images/project-1.jpg';
-import project_2 from '../images/project-2.jpg';
-import project_3 from '../images/project-3.jpg';
-import project_4 from '../images/project-4.jpg';
-import recordImg from '../images/record.png';
+import portfolioImg from '../images/portfolio.png';
+import beachImg from '../images/beachResort.png';
+import dbImg from '../images/dashboard.png';
 
 
 interface Props {
@@ -23,7 +21,7 @@ interface Props {
 function Portfolio(props: Props) {
    const { className } = props;
 
-   const images = [project_1, project_2, project_3, project_4, recordImg];
+   const images = [portfolioImg, beachImg, dbImg];
 
    const [[prev, next, direction], setPage] = useState([0, 1, 1]);
 
@@ -72,20 +70,20 @@ const PORTFOLIO = styled.section`
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 10px;
+      background: ${colors.purple};
+      background-image: ${colors.bg_linear_grad};
+      border-radius: 20px;
       width: 800px;
       margin: auto;
    }
    .portfolio__slickSlider {
-      border: 10px solid ${colors.purple};
-      border-radius: 20px 20px 0 0;
       width: 100%;
    }
    .portfolio__iconContainer {
       display: flex;
       justify-content: center;
-      background: ${colors.purple};
       padding: 10px;
-      border-radius: 0 0 20px 20px;
       width: 100%;
    }
    .portfolio__icon {

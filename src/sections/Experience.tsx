@@ -80,10 +80,12 @@ const Main = styled.main`
       flex-direction: column;
       justify-content: center;
       background: ${colors.navyblueDark};
+      background-image: ${colors.bg_linear_grad};
       color: ${colors.coolGray};
       padding: 0 min(5%, 60px) 20px min(5%, 60px);
       border-radius: 14px;
       margin-top: 60px;
+
    }
 
    .experience__button {

@@ -46,7 +46,7 @@ function Footer(props: Props) {
 const FOOTER = styled.div`
    display: flex;
    min-height: 100vh;
-   background: ${colors.orshblood};
+   background: ${colors.bg_linear_grad};
 `;
 
 const Main = styled.main`

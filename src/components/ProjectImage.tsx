@@ -20,11 +20,9 @@ function ProjectImage(props: Props) {
         return {
           x: direction > 0 ? num : -num,
           opacity: 0,
-          zIndex: 0,
         };
       },
       center: {
-        zIndex: 1,
         x: 0,
         opacity: 1,
       },
@@ -60,9 +58,9 @@ function ProjectImage(props: Props) {
 }
 
 const Img = styled(motion.img)`
-   height: 350px;
+   height: 348px;
    width: 100%;
-   border-radius: 8px 8px 0 0;
+   border-radius: 12px;
 `;
 
 export default ProjectImage
