@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { wrap } from 'popmotion';
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from 'react-icons/hi';
 
 import { colors, mediaQueries } from '../config';
@@ -8,10 +7,6 @@ import { colors, mediaQueries } from '../config';
 import SubHeader from '../components/SubHeader';
 import ProjectImage from '../components/ProjectImage';
 import Aside from '../components/Aside';
-
-import portfolioImg from '../images/portfolio.png';
-import beachImg from '../images/beachResort.png';
-import dbImg from '../images/dashboard.png';
 
 
 interface Props {
@@ -21,14 +16,10 @@ interface Props {
 function Portfolio(props: Props) {
    const { className } = props;
 
-   const images = [portfolioImg, beachImg, dbImg];
-
-   const [[prev, next, direction], setPage] = useState([0, 1, 1]);
-
-   const ind1 = wrap(0, images.length, prev);
+   const [[ next, direction], setPage] = useState([1, 1]);
 
    const paginate = (newDirection: number) => {
-      setPage([prev + newDirection, next + newDirection, newDirection]);
+      setPage([next + newDirection, newDirection]);
    };
 
    return (
@@ -41,13 +32,12 @@ function Portfolio(props: Props) {
 
             <div className="portfolio__frame">
                <div className="portfolio__slickSlider">
-                     <ProjectImage src={images[ind1]} alt="project" name="Landing Page" category="Web Dev" 
-                                    direction={direction}/>
+                     <ProjectImage nextValues={[next, direction]}/>
                </div>
 
                <div className="portfolio__iconContainer">
-                  <HiOutlineChevronLeft className="portfolio__icon" onClick={() => paginate(-1)} />
-                  <HiOutlineChevronRight className="portfolio__icon" onClick={() => paginate(1)} />
+                  <HiOutlineChevronLeft className="portfolio__icon" onClick={() => paginate(1)} />
+                  <HiOutlineChevronRight className="portfolio__icon" onClick={() => paginate(-1)} />
                </div>
             </div>
          </div>
@@ -65,8 +55,11 @@ const PORTFOLIO = styled.section`
 
    .portfolio__main {
       flex-basis: 90%;
+      display: flex;
+      flex-direction: column;
    }
    .portfolio__frame {
+      align-self: center;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -75,7 +68,6 @@ const PORTFOLIO = styled.section`
       background-image: ${colors.bg_linear_grad};
       border-radius: 20px;
       width: 800px;
-      margin: auto;
    }
    .portfolio__slickSlider {
       width: 100%;
@@ -90,6 +82,7 @@ const PORTFOLIO = styled.section`
       width: 30px;
       height: 30px;
       transition: color .4s ease-in-out;
+      cursor: pointer;
 
       :hover { color: ${colors.orshblood} }
    }

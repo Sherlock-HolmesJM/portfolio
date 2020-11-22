@@ -30,8 +30,8 @@ function About(props: Props) {
          toggleActions: 'play pause resume complete',
       });
       
-      gsap.from('.about__maindiv1', {
-         scrollTrigger: trigger('.about__maindiv1'),
+      gsap.from('.about__hero', {
+         scrollTrigger: trigger('.about__hero'),
          opacity: 0,
          x: 100
       });
@@ -52,7 +52,7 @@ function About(props: Props) {
             <MainDiv1 className="about__maindiv1">
                   <HeroFrame className="about__frame1"></HeroFrame>
                   <HeroFrame2 className="about__frame2"></HeroFrame2>
-                  <Hero src={aboutHero} alt="about_hero" />
+                  <Hero src={aboutHero} alt="about_hero" className="about__hero" />
             </MainDiv1>
 
             <MainDiv2 className="about__maindiv2">

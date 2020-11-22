@@ -8,11 +8,12 @@ import logo from '../logo.svg';
 import Aside from '../components/Aside';
 
 import { Context } from '../context';
+import { colors } from '../config';
 
 interface Props {}
 
 function Header(props: Props) {
-   const { isOpen, matches } = useContext(Context);
+   const { isOpen, matches, sticky } = useContext(Context);
 
    const logoVariants = {
       start: {
@@ -25,7 +26,8 @@ function Header(props: Props) {
    }
 
    return (
-      <HeaderComp id="header" initial={false} animate={!matches ? "keep" : isOpen ? "open" : "closed"}>
+      <HeaderComp id="header" sticky={sticky} initial={false}
+                  animate={!matches ? "keep" : isOpen ? "open" : "closed"}>
 
          <Aside></Aside>
          
@@ -45,12 +47,13 @@ function Header(props: Props) {
    )
 }
 
-const HeaderComp = styled(motion.header)`
-   position: absolute;
+const HeaderComp = styled(motion.header)<{ sticky: boolean}>`
+   position: ${props => props.sticky ? 'sticky' : 'absolute'};
    top: 0;
    display: flex;
    height: 47px;
    width: 100%;
+   background: ${props => props.sticky ? colors.coolGray : colors.transparent};
    z-index: 111;
 `;
 

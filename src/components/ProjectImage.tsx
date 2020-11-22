@@ -1,24 +1,45 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
+import { wrap } from 'popmotion';
+
+import portfolioImg from '../images/portfolio.png';
+import beachImg from '../images/beachResort.png';
+import dbImg from '../images/dashboard.png';
 
 interface Props {
-   src: any,
-   alt: string,
-   name: string,
-   category: string,
-   direction?: number,
+   nextValues: [number, number],
 }
 
 function ProjectImage(props: Props) {
-   const { src, alt, direction } = props;
+    const { nextValues } = props;
 
-   const num = 1000;
+    const images = [portfolioImg, beachImg, dbImg];
+
+    const [[next, direction], setPage] = useState(nextValues);
+
+    console.log(next, direction, nextValues);
+
+    const index = wrap(0, images.length, next);
+
+    const paginate = (newDirection: number) => {
+        setPage([next + newDirection, newDirection]);
+    };
+
+    const swipePower = (offset: number, velocity: number) => {
+      return Math.abs(offset) * velocity;
+    };
+
+    useEffect(() => {
+      setPage(nextValues);
+    }, [nextValues]);
+
+   const threshHold = 1000;
 
    const variants = {
       enter: (direction: number) => {
         return {
-          x: direction > 0 ? num : -num,
+          x: direction > 0 ? threshHold : -threshHold,
           opacity: 0,
         };
       },
@@ -29,7 +50,7 @@ function ProjectImage(props: Props) {
       exit: (direction: number) => {
         return {
           zIndex: 0,
-          x: direction < 0 ? num : -num,
+          x: direction < 0 ? threshHold : -threshHold,
           opacity: 0,
           transition: { duration: 0.2 }
         };
@@ -39,10 +60,10 @@ function ProjectImage(props: Props) {
    return (
          <AnimatePresence custom={direction} exitBeforeEnter>
             <Img 
-               key={src}
+               key={images[index]}
                className="img"
-               src={src} 
-               alt={alt} 
+               src={images[index]} 
+               alt="project" 
                variants={variants} 
                custom={direction} 
                initial="enter" 
@@ -52,6 +73,16 @@ function ProjectImage(props: Props) {
                      x: { type: "spring", stiffness: 300, damping: 30 },
                      opacity: { duration: 0.2 }
                   }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0, }}
+                dragElastic={1}
+                onDragEnd={(e, {offset, velocity}) => {
+                    const swipe = swipePower(offset.x, velocity.x);
+                    
+                    if (swipe < threshHold) paginate(1);
+                    else paginate(-1);
+                }}
+                
             />
          </AnimatePresence>
    )

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import { mediaQueries, colors } from './config';
+import { mediaQueries } from './config';
 
 
 
@@ -51,15 +51,11 @@ class Provider extends Component<Props, State> {
 
       this.setState({ matches: mediaQuery.matches }); // first call is needed
 
-      gsap.to('#header', {
-         scrollTrigger: {
-            trigger: '#header',
-            start: 'center top',
-            scrub: 1,
-            onUpdate: self => { this.setState({ sticky: self.progress === 1 }) },
-         },
-         position: 'sticky',
-         background: colors.coolGray,
+      ScrollTrigger.create({
+         trigger: '#header',
+         start: 'center top',
+         scrub: 1,
+         onUpdate: self => { this.setState({ sticky: self.progress === 1 }) },
       });
 
       gsap.utils.toArray('.section').forEach((child) => {
