@@ -38,6 +38,7 @@ function Range(props: Props) {
       scrollTrigger: trigger,
       width: `${value}%`,
     });
+    // eslint-disable-next-line
   }, []);
 
   return (
