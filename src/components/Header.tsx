@@ -13,62 +13,74 @@ import { colors } from '../config';
 interface Props {}
 
 function Header(props: Props) {
-   const { isOpen, matches, sticky } = useContext(Context);
+  const { isOpen, matches, sticky } = useContext(Context);
 
-   const logoVariants = {
-      start: {
-         scale: 0
-      },
-      stop: {
-         scale: 1,
-         transition: { duration: 1 }
-      }
-   }
+  const logoVariants = {
+    start: {
+      scale: 0,
+    },
+    stop: {
+      scale: 1,
+      transition: { duration: 1 },
+    },
+  };
 
-   return (
-      <HeaderComp id="header" sticky={sticky} initial={false}
-                  animate={!matches ? "keep" : isOpen ? "open" : "closed"}>
+  return (
+    <Section
+      id='header'
+      className={sticky ? 'header-sticky' : ''}
+      initial={false}
+      animate={!matches ? 'keep' : isOpen ? 'open' : 'closed'}
+    >
+      <Aside></Aside>
 
-         <Aside></Aside>
-         
-         <Main>
-            <Div>
-               <Img variants={logoVariants} initial="start" animate="stop" src={logo} alt="logo" />
-            </Div>
+      <main className='header__main'>
+        <div className='header__div'>
+          <motion.img
+            className='header__img'
+            variants={logoVariants}
+            initial='start'
+            animate='stop'
+            src={logo}
+            alt='logo'
+          />
+        </div>
 
-            <Nav />
+        <Nav />
 
-            <MenuToggle />
-         </Main>
+        <MenuToggle />
+      </main>
 
-         <Aside></Aside>
-      
-      </HeaderComp>
-   )
+      <Aside></Aside>
+    </Section>
+  );
 }
 
-const HeaderComp = styled(motion.header)<{ sticky: boolean}>`
-   position: ${props => props.sticky ? 'sticky' : 'absolute'};
-   top: 0;
-   display: flex;
-   height: 47px;
-   width: 100%;
-   background: ${props => props.sticky ? colors.coolGray : colors.transparent};
-   z-index: 111;
-`;
+const Section = styled(motion.header)`
+  position: absolute;
+  top: 0;
+  display: flex;
+  height: 47px;
+  width: 100%;
+  background: ${colors.transparent};
+  z-index: 111;
 
-const Div = styled.div`
-   width: 150px;
-`;
+  &.header-sticky {
+    position: sticky;
+    background: ${colors.coolGray};
+  }
 
-const Img = styled(motion.img)`
-   padding-top: 15px;
-`;
-
-const Main = styled.main`
-   flex-basis: 90%;
-   display: flex;
-   justify-content: space-between;
+  .header__main {
+    flex-basis: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header__div {
+    width: 150px;
+  }
+  .header__img {
+    width: 100%;
+  }
 `;
 
 export default Header;
