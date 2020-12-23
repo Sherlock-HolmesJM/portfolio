@@ -80,6 +80,7 @@ const Section = styled(motion.header)`
     width: 150px;
   }
   .header__img {
+    margin: 7px;
     width: 100%;
   }
 `;

@@ -55,7 +55,7 @@ class Provider extends Component<Props, State> {
     ScrollTrigger.create({
       trigger: '#header',
       start: 'center top',
-      scrub: 1,
+      // scrub: 1,
       onUpdate: (self) => {
         this.setState({ sticky: self.progress > 0 });
       },

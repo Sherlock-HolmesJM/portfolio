@@ -112,21 +112,34 @@ const Section = styled.div`
     .about__maindiv1 {
       width: 100%;
     }
+
+    .about__maindiv1 {
+      justify-content: center;
+    }
+    .about__frame1,
+    .about__frame2 {
+      bottom: 40px;
+    }
+    .about__hero {
+      top: -15px;
+    }
   }
 
   @media only screen and (max-width: 400px) {
     .about__frame1 {
-      width: 250px;
-      height: 205px;
+      width: 300px;
+      height: 255px;
+      bottom: 80px;
     }
     .about__frame2 {
-      height: 240px;
-      width: 264px;
+      height: 290px;
+      width: 314px;
+      bottom: 80px;
     }
     .about__hero {
-      width: 300px;
-      height: 340px;
-      top: 160px;
+      width: 350px;
+      height: 420px;
+      top: 20px;
     }
   }
 `;

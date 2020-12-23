@@ -51,6 +51,10 @@ const FOOTER = styled.div`
   min-height: 100vh;
   background: ${colors.bg_linear_grad};
   min-width: 405px;
+
+  @media only screen and (max-width: 351px) {
+    min-height: 120vh;
+  }
 `;
 
 const Main = styled.main`
