@@ -55,6 +55,7 @@ const PORTFOLIO = styled.section`
   display: flex;
   background: ${colors.coolGray};
   min-height: 100vh;
+  min-width: 405px;
 
   .portfolio__main {
     flex-basis: 90%;

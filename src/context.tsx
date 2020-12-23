@@ -57,14 +57,14 @@ class Provider extends Component<Props, State> {
       start: 'center top',
       scrub: 1,
       onUpdate: (self) => {
-        this.setState({ sticky: self.progress === 1 });
+        this.setState({ sticky: self.progress > 0 });
       },
     });
 
-    gsap.utils.toArray('.section').forEach((child) => {
+    gsap.utils.toArray('.section').forEach((el) => {
       ScrollTrigger.create({
-        trigger: child as Element,
-        id: (child as Element).id,
+        trigger: el as Element,
+        id: (el as Element).id,
         start: 'top center',
         end: 'bottom center',
 
@@ -84,5 +84,4 @@ class Provider extends Component<Props, State> {
 }
 
 export { Context };
-
 export default Provider;

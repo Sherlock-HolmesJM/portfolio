@@ -60,6 +60,7 @@ const Section = styled.div`
   display: flex;
   background: ${colors.coolGray};
   min-height: 100vh;
+  min-width: 405px;
 
   .about__main {
     flex-basis: 90%;
@@ -107,8 +108,25 @@ const Section = styled.div`
       flex-direction: column;
       align-items: center;
     }
-    .about__maindiv2 {
+    .about__maindiv2,
+    .about__maindiv1 {
       width: 100%;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .about__frame1 {
+      width: 250px;
+      height: 205px;
+    }
+    .about__frame2 {
+      height: 240px;
+      width: 264px;
+    }
+    .about__hero {
+      width: 300px;
+      height: 340px;
+      top: 160px;
     }
   }
 `;

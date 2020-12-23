@@ -100,6 +100,7 @@ const EXPERIENCE = styled.section`
   background: ${colors.coolGray};
   display: flex;
   min-height: 100vh;
+  min-width: 405px;
 `;
 
 const Main = styled.main`

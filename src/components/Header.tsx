@@ -62,6 +62,7 @@ const Section = styled(motion.header)`
   display: flex;
   height: 47px;
   width: 100%;
+  min-width: 405px;
   background: ${colors.transparent};
   z-index: 111;
 
